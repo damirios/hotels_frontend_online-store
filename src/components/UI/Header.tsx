@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { List } from './List';
+import { Logo } from './Logo';
+import { Pricelist } from "./Pricelist";
+import { ContactsPhone } from "./ContactsPhone";
+import { MailLink } from "./MailLink";
 
 export function Header() {
+	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Возврат", "Контакты"];
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
 	useEffect(() => {
-		console.log(isMobile);
 		if (isMobile) {
 			setMobileArch();
 		} else {
@@ -45,30 +50,8 @@ export function Header() {
 								<p>(Рынок Восточный)</p>
 							</div>
 						</div>
-						<a href="mailto:opt.sultan@mail.ru" className="top-header__mail mail">
-							<img src="/images/icons/mail.svg" alt="mail" className="mail__icon" />
-							<div className="mail__email">
-								<p className="bold">opt.sultan@mail.ru</p>
-								<p>На связи в любое время</p>
-							</div>
-						</a>
-						<div className="top-header__menu menu">
-							<h1 className="menu__title">Меню сайта: </h1>
-							<ul className="menu__list">
-								<li className="menu__item">
-									<a href="#" className="menu__link">О компании</a>
-								</li>
-								<li className="menu__item">
-									<a href="#" className="menu__link">Доставка и оплата</a>
-								</li>
-								<li className="menu__item">
-									<a href="#" className="menu__link">Возврат</a>
-								</li>
-								<li className="menu__item">
-									<a href="#" className="menu__link">Контакты</a>
-								</li>
-							</ul>
-						</div>
+						<MailLink />
+						<List class='menu-header' singleClass="top-header__menu" title={'Меню сайта: '} list={menuLinks} />
 					</div>
 				</div>
 			</div>
@@ -79,13 +62,8 @@ export function Header() {
 							<button onClick={handleBurgerClick} className="burger__button">
 								<span></span>
 							</button>
-							<div className="burger__content">
-
-							</div>
 						</div>
-						<a href="#" className="bottom-header__logo logo">
-							<img src="/images/icons/logo.svg" alt="logo" className="logo__image" />
-						</a>
+						<Logo class="bottom-header__logo" />
 						<button type="button" className="bottom-header__catalog catalog">
 							<span>Каталог</span>
 							{isMobile ? 
@@ -103,19 +81,7 @@ export function Header() {
 							</button>
 						</form>
 						<div className="bottom-header__support support">
-							<div className="support__info">
-								{isMobile ? <p className="support__sales-dep">Отдел продаж</p> : null}
-								<p className="support__phone-number">+7 (777) 490-00-91</p>
-								<p className="support__work-times">время работы: <span>9:00-20:00</span></p>
-								<a href="tel:+77774900091" className="support__call">
-									{isMobile ?
-										<div className="support__call-image-box">
-											<img src="/images/icons/phone_white.svg" alt="phone" className="support__call-image" />
-										</div> : null
-									}
-									<span>Заказать звонок</span>
-								</a>
-							</div>
+							<ContactsPhone isMobile={isMobile} />
 							<div className="support__image-box">
 								{isMobile ? 
 									<img src="/images/icons/phone.svg" alt="phone" /> :
@@ -124,10 +90,7 @@ export function Header() {
 								<div className="support__online-point"></div>
 							</div>
 						</div>
-						<button type="button" className="bottom-header__pricelist pricelist">
-							<span className="pricelist__text">Прайс-лист</span>
-							<img src="/images/icons/download.svg" alt="download" className="pricelist__image" />
-						</button>
+						<Pricelist class='bottom-header__pricelist' />
 						<button type="button" className="bottom-header__cart cart">
 							<div className="cart__image-box">
 								<img src="/images/icons/cart.svg" alt="cart" className="cart__image" />

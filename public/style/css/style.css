@@ -138,38 +138,38 @@ a:hover {
   color: #111111;
 }
 
-.menu {
+.menu-header {
   margin-left: auto;
 }
-.menu__title {
+.menu-header__title {
   font-size: 20px;
   line-height: 150%;
   color: #3F4E65;
   font-weight: 600;
   display: none;
 }
-.menu__list {
+.menu-header__list {
   display: flex;
   align-items: center;
   column-gap: 60px;
   padding: 20px 0;
 }
 @media (max-width: 1225px) {
-  .menu__list {
+  .menu-header__list {
     column-gap: 30px;
   }
 }
 @media (max-width: 997px) {
-  .menu__list {
+  .menu-header__list {
     column-gap: 20px;
   }
 }
 @media (max-width: 997px) {
-  .menu__list {
+  .menu-header__list {
     column-gap: 15px;
   }
 }
-.menu__link {
+.menu-header__link {
   font-family: "Inter";
   font-size: 14px;
   font-weight: 400;
@@ -178,7 +178,7 @@ a:hover {
   text-decoration: none;
 }
 @media (max-width: 840px) {
-  .menu__link {
+  .menu-header__link {
     font-size: 13px;
   }
 }
@@ -803,14 +803,14 @@ a:hover {
     align-items: center;
     justify-content: center;
   }
-  .menu {
+  .menu-header {
     order: 4;
     padding-top: 25px;
     position: relative;
     margin: 0;
     width: 100%;
   }
-  .menu::before {
+  .menu-header::before {
     content: "";
     position: absolute;
     top: 0;
@@ -820,10 +820,10 @@ a:hover {
     border: 1px dashed #3F4E65;
     opacity: 0.2;
   }
-  .menu__title {
+  .menu-header__title {
     display: block;
   }
-  .menu__list {
+  .menu-header__list {
     padding: 25px 0 0;
     margin-bottom: 22px;
     display: flex;
@@ -831,7 +831,7 @@ a:hover {
     align-items: start;
     row-gap: 20px;
   }
-  .menu__link {
+  .menu-header__link {
     font-size: 14px;
   }
   .pricelist {

@@ -1,7 +1,70 @@
+import { List } from './List';
+import { Logo } from './Logo';
+import { Pricelist } from './Pricelist';
+import { ContactsPhone } from './ContactsPhone';
+import { MailLink } from './MailLink';
+
 export function Footer() {
-  return (
-    <footer className="footer">
-      Footer
-    </footer>
-  )
+
+	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Возврат", "Контакты"];
+	const categoryLinks: string[] = ["Бытовая химия", "Косметика и гигиена", "Товары для дома", "Товары для детей и мам", "Посуда"];
+
+	return (
+		<footer className="footer">
+			<div className="container">
+				<div className="footer__row">
+					<div className="footer__subscribe-logo">
+						<Logo />
+						<div className="footer__company-description">
+							Компания «Султан» — снабжаем розничные магазины товарами 
+							"под ключ" в Кокчетаве и Акмолинской области
+						</div>
+						<div className="footer__subscribe subscribe-footer">
+							<p className="subscribe-footer">Подпишись на скидки и акции</p>
+							<form className="subscribe-footer__form">
+								<input type="text" className='subscribe-footer__input' placeholder='Введите ваш E-mail' />
+								<button className="subscribe-footer__submit">
+									<img src="/images/icons/arrow-right.svg" alt="arrow-right" />
+								</button>
+							</form>
+						</div>
+					</div>
+					<div className="footer__lists">
+						<List class='footer-list' list={menuLinks} title="Меню сайта: " />
+						<List class='footer-list' list={categoryLinks} title="Категории: " />
+					</div>
+					<div className="footer__messengers-pricelist messengers-pricelist">
+						<div className="messengers-pricelist__pricelist">
+							<h1>Скачать прайс-лист:</h1>
+							<Pricelist />
+						</div>
+						<div className="messengers-pricelist__messengers messengers">
+							<h1>Связь в мессенджерах:</h1>
+							<div className="messengers__buttons">
+								<button>
+									<img src="/images/icons/whatsapp.svg" alt="whatsapp" />
+								</button>
+								<button>
+									<img src="/images/icons/telegram.svg" alt="telegram" />
+								</button>
+							</div>
+						</div>
+					</div>
+					<div className="footer__contacts contacts">
+						<h1 className="contacts">Контакты:</h1>
+						<ContactsPhone isMobile={false} />
+						<MailLink />
+						<div className="contacts__cards">
+							<a href="#">
+								<img src="/images/icons/visa.svg" alt="visa" />
+							</a>
+							<a href="#">
+								<img src="/images/icons/masterCard.svg" alt="masterCard" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	);
 }
