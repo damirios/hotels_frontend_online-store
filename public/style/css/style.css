@@ -65,6 +65,9 @@ a:hover {
   text-decoration: underline;
 }
 
+.top-header {
+  border-bottom: 1px solid rgba(63, 78, 101, 0.2);
+}
 .top-header__row {
   display: flex;
   align-items: center;
@@ -74,6 +77,27 @@ a:hover {
   display: flex;
   align-items: center;
   column-gap: 15px;
+  position: relative;
+}
+.location::before {
+  content: "";
+  position: absolute;
+  right: -30px;
+  top: -2px;
+  height: 39px;
+  width: 0;
+  border-right: 1px dashed rgba(63, 78, 101, 0.1);
+}
+@media (max-width: 997px) {
+  .location::before {
+    right: 0px;
+    top: 5px;
+  }
+}
+@media (max-width: 768px) {
+  .location::before {
+    display: none;
+  }
 }
 @media (max-width: 997px) {
   .location {
@@ -169,6 +193,33 @@ a:hover {
     column-gap: 15px;
   }
 }
+.menu-header__item {
+  position: relative;
+}
+.menu-header__item:not(:last-child):before {
+  content: "";
+  position: absolute;
+  right: -30px;
+  top: -2px;
+  height: 29px;
+  width: 0;
+  border-right: 1px dashed rgba(63, 78, 101, 0.1);
+}
+@media (max-width: 1225px) {
+  .menu-header__item:not(:last-child):before {
+    right: -15px;
+  }
+}
+@media (max-width: 997px) {
+  .menu-header__item:not(:last-child):before {
+    right: -7px;
+  }
+}
+@media (max-width: 768px) {
+  .menu-header__item:not(:last-child):before {
+    display: none;
+  }
+}
 .menu-header__link {
   font-family: "Inter";
   font-size: 14px;
@@ -183,6 +234,9 @@ a:hover {
   }
 }
 
+.bottom-header {
+  padding: 21px 0;
+}
 .bottom-header__row {
   display: flex;
   align-items: center;
@@ -379,6 +433,26 @@ a:hover {
   display: flex;
   align-items: center;
   column-gap: 10px;
+  position: relative;
+}
+.support::before {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 8px;
+  height: 49px;
+  width: 0;
+  border-right: 1px dashed rgba(63, 78, 101, 0.1);
+}
+@media (max-width: 1440px) {
+  .support::before {
+    right: -9px;
+  }
+}
+@media (max-width: 1225px) {
+  .support::before {
+    display: none;
+  }
 }
 .support__info {
   flex: 1 0 160px;
@@ -470,6 +544,26 @@ a:hover {
   padding: 21px 43.5px;
   border: 0;
   border-radius: 79px;
+  position: relative;
+}
+.pricelist::before {
+  content: "";
+  position: absolute;
+  right: -34px;
+  top: 3px;
+  height: 49px;
+  width: 0;
+  border-right: 1px dashed rgba(63, 78, 101, 0.1);
+}
+@media (max-width: 1440px) {
+  .pricelist::before {
+    right: -9px;
+  }
+}
+@media (max-width: 1225px) {
+  .pricelist::before {
+    display: none;
+  }
 }
 @media (max-width: 1440px) {
   .pricelist {
@@ -646,6 +740,7 @@ a:hover {
     width: 100%;
     z-index: 5;
     background-color: #fff;
+    padding: 0;
   }
   .bottom-header::after {
     content: "";

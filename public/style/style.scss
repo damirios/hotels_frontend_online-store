@@ -90,6 +90,7 @@ a {
 
 // header top ================================================
 .top-header {
+	border-bottom: 1px solid rgba(63, 78, 101, 0.2);
 
 	// .top-header__row
 	&__row {
@@ -115,6 +116,26 @@ a {
 	display: flex;
 	align-items: center;
 	column-gap: 15px;
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		right: -30px;
+		top: -2px;
+		height: 39px;
+		width: 0;
+		border-right: 1px dashed rgba(63, 78, 101, 0.1);
+
+		@media (max-width: 997px) {
+			right: 0px;
+			top: 5px;
+		}
+
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
 
 	@media (max-width: 997px) {
 		column-gap: 10px;
@@ -223,6 +244,29 @@ a {
 
 	// .menu__item
 	&__item {
+		position: relative;
+
+		&:not(:last-child):before {
+			content: '';
+			position: absolute;
+			right: -30px;
+			top: -2px;
+			height: 29px;
+			width: 0;
+			border-right: 1px dashed rgba(63, 78, 101, 0.1);
+
+			@media (max-width: 1225px) {
+				right: -15px;
+			}
+
+			@media (max-width: 997px) {
+				right: -7px;
+			}
+
+			@media (max-width: 768px) {
+				display: none;
+			}
+		}
 	}
 
 	// .menu__link
@@ -243,6 +287,7 @@ a {
 // header bottom =============================================
 
 .bottom-header {
+	padding: 21px 0;
 
 	// .bottom-header__row
 	&__row {
@@ -447,6 +492,25 @@ a {
 	display: flex;
 	align-items: center;
 	column-gap: 10px;
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		right: -20px;
+		top: 8px;
+		height: 49px;
+		width: 0;
+		border-right: 1px dashed rgba(63, 78, 101, 0.1);
+
+		@media (max-width: 1440px) {
+			right: -9px;
+		}
+
+		@media (max-width: 1225px) {
+			display: none;
+		}
+	}
 
 
 	// .support__info
@@ -548,6 +612,25 @@ a {
 	padding: 21px 43.5px;
 	border: 0;
 	border-radius: 79px;
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		right: -34px;
+		top: 3px;
+		height: 49px;
+		width: 0;
+		border-right: 1px dashed rgba(63, 78, 101, 0.1);
+
+		@media (max-width: 1440px) {
+			right: -9px;
+		}
+
+		@media (max-width: 1225px) {
+			display: none;
+		}
+	}
 
 	@media (max-width: 1440px) {
 		padding: 17px 40px;
@@ -746,6 +829,7 @@ a {
 		width: 100%;
 		z-index: 5;
 		background-color: #fff;
+		padding: 0;
 
 		&::after {
 			content: '';
