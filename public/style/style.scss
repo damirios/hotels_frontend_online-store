@@ -346,8 +346,12 @@ a {
 		margin-left: auto;
 
 		@media (max-width: 1225px) {
-			width: 128px;
 			grid-area: 1 / -2 / 2 / -1;
+			min-width: 125px;
+		}
+
+		@media (max-width: 480px) {
+			min-width: 20px;
 		}
 	}
 }
@@ -596,6 +600,10 @@ a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		@media (max-width: 480px) {
+			margin-left: auto;
+		}
 	}
 
 	// .cart__image
@@ -633,6 +641,10 @@ a {
 		color: $color2;
 		flex: 1 1 auto;
 		text-align: right;
+
+		@media (max-width: 480px) {
+			display: none;
+		}
 	}
 
 	// .cart__sum
