@@ -14,13 +14,12 @@ export function Footer() {
 			<div className="container">
 				<div className="footer__row">
 					<div className="footer__subscribe-logo">
-						<Logo />
+						<Logo class='footer-logo' isWhite={true} />
 						<div className="footer__company-description">
-							Компания «Султан» — снабжаем розничные магазины товарами 
-							"под ключ" в Кокчетаве и Акмолинской области
+							Компания «Султан» — снабжаем розничные магазины товарами <span>"под ключ"</span> в Кокчетаве и Акмолинской области
 						</div>
 						<div className="footer__subscribe subscribe-footer">
-							<p className="subscribe-footer">Подпишись на скидки и акции</p>
+							<p className="subscribe-footer__title">Подпишись на скидки и акции</p>
 							<form className="subscribe-footer__form">
 								<input type="text" className='subscribe-footer__input' placeholder='Введите ваш E-mail' />
 								<button className="subscribe-footer__submit">
@@ -36,24 +35,24 @@ export function Footer() {
 					<div className="footer__messengers-pricelist messengers-pricelist">
 						<div className="messengers-pricelist__pricelist">
 							<h1>Скачать прайс-лист:</h1>
-							<Pricelist />
+							<Pricelist class='footer-pricelist' />
 						</div>
 						<div className="messengers-pricelist__messengers messengers">
 							<h1>Связь в мессенджерах:</h1>
 							<div className="messengers__buttons">
-								<button>
+								<button className='messengers__whatsapp'>
 									<img src="/images/icons/whatsapp.svg" alt="whatsapp" />
 								</button>
-								<button>
+								<button className='messengers__telegram'>
 									<img src="/images/icons/telegram.svg" alt="telegram" />
 								</button>
 							</div>
 						</div>
 					</div>
 					<div className="footer__contacts contacts">
-						<h1 className="contacts">Контакты:</h1>
-						<ContactsPhone isMobile={false} />
-						<MailLink />
+						<h1 className="contacts__title">Контакты:</h1>
+						<ContactsPhone isMobile={false} class='contacts' />
+						<MailLink image={false} class='contacts' />
 						<div className="contacts__cards">
 							<a href="#">
 								<img src="/images/icons/visa.svg" alt="visa" />

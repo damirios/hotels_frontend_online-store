@@ -1,13 +1,13 @@
-export function ContactsPhone(props: {isMobile: boolean}) {
+export function ContactsPhone(props: {isMobile: boolean, class?: string}) {
     return (
-        <div className="support__info">
-            {props.isMobile ? <p className="support__sales-dep">Отдел продаж</p> : null}
-            <p className="support__phone-number">+7 (777) 490-00-91</p>
-            <p className="support__work-times">время работы: <span>9:00-20:00</span></p>
-            <a href="tel:+77774900091" className="support__call">
+        <div className={`${props.class}__info`}>
+            {props.isMobile ? <p className={`${props.class}__sales-dep`}>Отдел продаж</p> : null}
+            <p className={`${props.class}__phone-number`}>+7 (777) 490-00-91</p>
+            <p className={`${props.class}__work-times`}>время работы: <span>9:00-20:00</span></p>
+            <a href="tel:+77774900091" className={`${props.class}__call`}>
                 {props.isMobile ?
-                    <div className="support__call-image-box">
-                        <img src="/images/icons/phone_white.svg" alt="phone" className="support__call-image" />
+                    <div className={`${props.class}__images-box`}>
+                        <img src="/images/icons/phone_white.svg" alt="phone" className={`${props.class}__call-image`} />
                     </div> : null
                 }
                 <span>Заказать звонок</span>

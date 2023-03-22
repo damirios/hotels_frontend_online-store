@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { List } from './List';
-import { Logo } from './Logo';
-import { Pricelist } from "./Pricelist";
-import { ContactsPhone } from "./ContactsPhone";
-import { MailLink } from "./MailLink";
+import { List } from './UI/List';
+import { Logo } from './UI/Logo';
+import { Pricelist } from "./UI/Pricelist";
+import { ContactsPhone } from "./UI/ContactsPhone";
+import { MailLink } from "./UI/MailLink";
 
 export function Header() {
 	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Возврат", "Контакты"];
@@ -50,7 +50,7 @@ export function Header() {
 								<p>(Рынок Восточный)</p>
 							</div>
 						</div>
-						<MailLink />
+						<MailLink class='top-header' image={true} />
 						<List class='menu-header' singleClass="top-header__menu" title={'Меню сайта: '} list={menuLinks} />
 					</div>
 				</div>
@@ -81,7 +81,7 @@ export function Header() {
 							</button>
 						</form>
 						<div className="bottom-header__support support">
-							<ContactsPhone isMobile={isMobile} />
+							<ContactsPhone isMobile={isMobile} class='support' />
 							<div className="support__image-box">
 								{isMobile ? 
 									<img src="/images/icons/phone.svg" alt="phone" /> :
@@ -90,7 +90,7 @@ export function Header() {
 								<div className="support__online-point"></div>
 							</div>
 						</div>
-						<Pricelist class='bottom-header__pricelist' />
+						<Pricelist class='bottom-header__pricelist pricelist' />
 						<button type="button" className="bottom-header__cart cart">
 							<div className="cart__image-box">
 								<img src="/images/icons/cart.svg" alt="cart" className="cart__image" />
