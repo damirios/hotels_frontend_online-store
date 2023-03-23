@@ -1,30 +1,57 @@
-export function Content() {
+import { Sort } from "./CustomSort/Sort";
+import { filterFields } from "../data/filterFields";
+import { FiltersTop } from "./Filters/FiltersTop";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useTypedDispatch } from "../hooks/useTypedDispatch";
+import { fetchProducts } from "../store/slices/productSlice";
+import { Products } from "./Products";
+
+export function Content(props: {breadcrumbs?: string}) {
+	const productsList = useTypedSelector(state => state.product.list);
+
+	const dispatch = useTypedDispatch();
+
+	function handle() {
+		dispatch(fetchProducts());
+	}
+	
 	return(
 		<main className="content">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque debitis libero ad amet officiis 
-			eos dolorum distinctio odio cumque veritatis id neque voluptates, accusantium consequatur enim 
-			doloremque recusandae consequuntur hic, possimus esse dolorem numquam officia sint? Cum vel c
-			umque ut autem temporibus? Blanditiis ullam fugiat, numquam explicabo eos, cum incidunt repudiandae 
-			quaerat minus tenetur, optio cumque. Exercitationem cum impedit sapiente dolores suscipit vitae aperiam 
-			eius similique dignissimos ipsam vel aliquid corporis fuga ea, quam animi distinctio nisi quos! Vitae, 
-			assumenda tempora unde aperiam porro eaque quas nihil eos a dolorem sit repellendus, cum sapiente eius 
-			iusto consequatur nostrum asperiores nulla.
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque debitis libero ad amet officiis 
-			eos dolorum distinctio odio cumque veritatis id neque voluptates, accusantium consequatur enim 
-			doloremque recusandae consequuntur hic, possimus esse dolorem numquam officia sint? Cum vel c
-			umque ut autem temporibus? Blanditiis ullam fugiat, numquam explicabo eos, cum incidunt repudiandae 
-			quaerat minus tenetur, optio cumque. Exercitationem cum impedit sapiente dolores suscipit vitae aperiam 
-			eius similique dignissimos ipsam vel aliquid corporis fuga ea, quam animi distinctio nisi quos! Vitae, 
-			assumenda tempora unde aperiam porro eaque quas nihil eos a dolorem sit repellendus, cum sapiente eius 
-			iusto consequatur nostrum asperiores nulla.
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque debitis libero ad amet officiis 
-			eos dolorum distinctio odio cumque veritatis id neque voluptates, accusantium consequatur enim 
-			doloremque recusandae consequuntur hic, possimus esse dolorem numquam officia sint? Cum vel c
-			umque ut autem temporibus? Blanditiis ullam fugiat, numquam explicabo eos, cum incidunt repudiandae 
-			quaerat minus tenetur, optio cumque. Exercitationem cum impedit sapiente dolores suscipit vitae aperiam 
-			eius similique dignissimos ipsam vel aliquid corporis fuga ea, quam animi distinctio nisi quos! Vitae, 
-			assumenda tempora unde aperiam porro eaque quas nihil eos a dolorem sit repellendus, cum sapiente eius 
-			iusto consequatur nostrum asperiores nulla.
+			<div className="content__breadcrumbs breadcrumbs">
+				<div className="container">
+					<ul className="breadcrumbs__list">
+						<li className="breadcrumbs__item">
+							<a href="#">Главная</a>
+						</li>
+						<li className="breadcrumbs__item">
+							<a href="#">Главная</a>
+						</li>
+						<li className="breadcrumbs__item">
+							<a href="#">Главная</a>
+						</li>
+						<li className="breadcrumbs__item">
+							<a href="#">Главная</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div className="content__catalog catalog-content">
+				<div className="container">
+					<div className="catalog-content__menu">
+						<div className="catalog-content__top">
+							<div className="catalog-content__title" onClick={handle}>Косметика и гигиена</div>
+							<Sort />
+						</div>
+						<FiltersTop className='catalog-content__filters-top' list={filterFields} />
+						{/* <div className="catalog-content__filters-top"></div> */}
+						<div className="catalog-content__sidebar"></div>
+						<Products list={productsList} />
+						{/* <div className="catalog-content__products"></div> */}
+						<div className="catalog-content__pagination pagination">1 2 3 4 5</div>
+						<div className="catalog-content__bottom-info">bottom info</div>
+					</div>
+				</div>
+			</div>
 		</main>
 	)
 }
