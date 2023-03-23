@@ -44,7 +44,7 @@ const productsSlice = createSlice({
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
 	const listPromise = new Promise(resolve => {
-		setTimeout(() => resolve(products), 1000); 
+		setTimeout(() => resolve(products), 500); 
 	});
 
 	return listPromise;
