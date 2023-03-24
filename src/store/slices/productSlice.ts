@@ -1,10 +1,9 @@
 import { ProductsState } from "../../types/product";
-import { products } from "../../data/productsDB";
+import { productsDB } from "../../data/productsDB";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProductType } from "../../types/productDBType";
 
 const initialState: ProductsState = {
-  list: [],
+  list: [...productsDB],
   loading: false,
   error: null,
   status: 'idle'
@@ -44,7 +43,7 @@ const productsSlice = createSlice({
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
 	const listPromise = new Promise(resolve => {
-		setTimeout(() => resolve(products), 500); 
+		setTimeout(() => resolve(productsDB), 500); 
 	});
 
 	return listPromise;

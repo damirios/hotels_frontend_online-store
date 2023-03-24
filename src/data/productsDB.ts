@@ -10,7 +10,8 @@ const sorti_1: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const aos_1: ProductType = {
@@ -19,10 +20,11 @@ const aos_1: ProductType = {
     sizeType: sizeTypes.volume,
     size: 450,
     barcode: '460404909754842',
-    manufacturer: 'Нэфис',
+    manufacturer: 'Нэфис1',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const ariel_1: ProductType = {
@@ -34,7 +36,8 @@ const ariel_1: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const bimax_1: ProductType = {
@@ -43,10 +46,11 @@ const bimax_1: ProductType = {
     sizeType: sizeTypes.weight,
     size: 1500,
     barcode: '46040490975484',
-    manufacturer: 'Нэфис',
+    manufacturer: 'Нэфис2',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const sorti_2: ProductType = {
@@ -55,10 +59,11 @@ const sorti_2: ProductType = {
     sizeType: sizeTypes.volume,
     size: 450,
     barcode: '46040490975485',
-    manufacturer: 'Нэфис',
+    manufacturer: 'Вим биль дан',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const aos_2: ProductType = {
@@ -70,7 +75,8 @@ const aos_2: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const ariel_2: ProductType = {
@@ -82,7 +88,8 @@ const ariel_2: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const bimax_2: ProductType = {
@@ -91,10 +98,11 @@ const bimax_2: ProductType = {
     sizeType: sizeTypes.weight,
     size: 1500,
     barcode: '46040490975488',
-    manufacturer: 'Нэфис',
+    manufacturer: 'Султан',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const sorti_3: ProductType = {
@@ -103,10 +111,11 @@ const sorti_3: ProductType = {
     sizeType: sizeTypes.volume,
     size: 450,
     barcode: '46040490975489',
-    manufacturer: 'Нэфис',
+    manufacturer: 'Султан',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const aos_3: ProductType = {
@@ -115,10 +124,11 @@ const aos_3: ProductType = {
     sizeType: sizeTypes.volume,
     size: 450,
     barcode: '460404909754810',
-    manufacturer: 'Нэфис',
+    manufacturer: 'Султан',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const ariel_3: ProductType = {
@@ -130,7 +140,8 @@ const ariel_3: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const bimax_3: ProductType = {
@@ -142,7 +153,8 @@ const bimax_3: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const sorti_4: ProductType = {
@@ -154,7 +166,8 @@ const sorti_4: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const aos_4: ProductType = {
@@ -166,7 +179,8 @@ const aos_4: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const ariel_4: ProductType = {
@@ -175,10 +189,11 @@ const ariel_4: ProductType = {
     sizeType: sizeTypes.weight,
     size: 15 * 28.8,
     barcode: '460404909754815',
-    manufacturer: 'Нэфис',
+    manufacturer: 'Дино',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const bimax_4: ProductType = {
@@ -190,7 +205,8 @@ const bimax_4: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const sorti_5: ProductType = {
@@ -202,7 +218,8 @@ const sorti_5: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const aos_5: ProductType = {
@@ -211,10 +228,11 @@ const aos_5: ProductType = {
     sizeType: sizeTypes.volume,
     size: 450,
     barcode: '460404909754818',
-    manufacturer: 'Нэфис',
+    manufacturer: 'Дино',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const ariel_5: ProductType = {
@@ -226,7 +244,8 @@ const ariel_5: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
 const bimax_5: ProductType = {
@@ -235,13 +254,14 @@ const bimax_5: ProductType = {
     sizeType: sizeTypes.weight,
     size: 1500,
     barcode: '460404909754820',
-    manufacturer: 'Нэфис',
+    manufacturer: 'Водный дом',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76
+    price: 48.76,
+    careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
-export const products: ProductType[] = [
+export const productsDB: ProductType[] = [
     sorti_1, aos_1, ariel_1, bimax_1,
     sorti_2, aos_2, ariel_2, bimax_2,
     sorti_3, aos_3, ariel_3, bimax_3,

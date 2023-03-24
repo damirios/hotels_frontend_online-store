@@ -7,7 +7,8 @@ export interface ProductType {
     manufacturer: string,
     brand: string,
     description: string,
-    price: number
+    price: number,
+    careTypes: string[]
 }
 
 export enum sizeTypes {

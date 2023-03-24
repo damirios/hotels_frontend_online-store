@@ -1,9 +1,11 @@
 import { ProductType, sizeTypes } from "../types/productDBType";
 import { Link } from 'react-router-dom';
+import { filterFields } from "../data/filterFields";
 
 export function SingleProduct(props: {product: ProductType}) {
     const { product } = props;
     let sizeIconURL = `/images/icons/size_${product.sizeType}.svg`; // volume or weight
+    const careTypesTitles = filterFields.filter(el => product.careTypes.includes(el.value)).map(el => el.title).join(', ');
 
     return (
         <li className="products__item single-product">
@@ -18,6 +20,9 @@ export function SingleProduct(props: {product: ProductType}) {
                 <Link to={`/products/${product.barcode}`} className="single-product__title">
                     <span>{product.title}.</span> {product.description}
                 </Link>
+                <div className="single-product__caretypes">
+                    Типы ухода: <span>{careTypesTitles}</span>
+                </div>
                 <div className="single-product__barcode">
                     Штрихкод: <span>{product.barcode}</span>
                 </div>

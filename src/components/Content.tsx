@@ -5,14 +5,40 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { fetchProducts } from "../store/slices/productSlice";
 import { Products } from "./Products";
+import { SidebarFilters } from "./Filters/SidebarFilters";
+import { addCareType, removeCareType } from "../store/slices/filtersSlice";
+import { isSubarray } from "../utilityFunctions/isSubarray";
 
 export function Content(props: {breadcrumbs?: string}) {
-	const productsList = useTypedSelector(state => state.product.list);
-
+	let productsList = useTypedSelector(state => state.products.list);
+	const filters = useTypedSelector(state => state.filters);
 	const dispatch = useTypedDispatch();
+	
+	const allManufacturers = Array.from(new Set(productsList.map(item => item.manufacturer)));
+	
+	let filteredProductsList = null;
+	// фильтруем список продуков по типам ухода
+	if (filters.careTypes.length !== 0) {
+		filteredProductsList = productsList.filter(product => isSubarray(product.careTypes, filters.careTypes));
+	}
+
 
 	function handle() {
 		dispatch(fetchProducts());
+	}
+
+	function handleCareTypeFilterClick(e: { target: HTMLInputElement }) {
+		const clickedFilter = e.target;
+		const filterValue = clickedFilter.dataset.value;
+
+		if (filterValue) {
+			const isActive = filters.careTypes.includes(filterValue);
+			if (isActive) {
+				dispatch(removeCareType(filterValue));
+			} else {
+				dispatch(addCareType(filterValue));
+			}
+		}
 	}
 	
 	return(
@@ -39,14 +65,14 @@ export function Content(props: {breadcrumbs?: string}) {
 				<div className="container">
 					<div className="catalog-content__menu">
 						<div className="catalog-content__top">
-							<div className="catalog-content__title" onClick={handle}>Косметика и гигиена</div>
+							<div className="catalog-content__title">Косметика и гигиена <span>{}</span></div>
 							<Sort />
 						</div>
-						<FiltersTop className='catalog-content__filters-top' list={filterFields} />
+						<FiltersTop className='catalog-content__filters-top' clickHandler={handleCareTypeFilterClick} 
+							list={filterFields} />
 						{/* <div className="catalog-content__filters-top"></div> */}
-						<div className="catalog-content__sidebar"></div>
-						<Products list={productsList} />
-						{/* <div className="catalog-content__products"></div> */}
+						<SidebarFilters allManufacturers={allManufacturers} clickHandler={handleCareTypeFilterClick} />
+						<Products list={filteredProductsList || productsList} />
 						<div className="catalog-content__pagination pagination">1 2 3 4 5</div>
 						<div className="catalog-content__bottom-info">bottom info</div>
 					</div>
