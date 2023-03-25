@@ -3,7 +3,7 @@ import { FilterState } from "../../types/filter"
 
 const initialState: FilterState = {
     price_min: 0,
-    price_max: null,
+    price_max: 10000,
     manufacturersList: [],
     careTypes: []
 }
@@ -18,13 +18,19 @@ const filterSlice = createSlice({
         removeCareType(state, action) {
             const index = state.careTypes.findIndex(el => el === action.payload);
             state.careTypes.splice(index, 1);
+        },
+        setFilters(state, action) {
+            state.manufacturersList = action.payload.list;
+            state.price_min = action.payload.price_min;
+            state.price_max = action.payload.price_max;
         }
     }
 });
 
 export const {
     addCareType,
-    removeCareType
+    removeCareType,
+    setFilters
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

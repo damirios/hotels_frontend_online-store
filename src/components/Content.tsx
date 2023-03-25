@@ -17,7 +17,7 @@ export function Content(props: {breadcrumbs?: string}) {
 	const allManufacturers = Array.from(new Set(productsList.map(item => item.manufacturer)));
 	
 	let filteredProductsList = null;
-	// фильтруем список продуков по типам ухода
+	// фильтруем список товаров
 	if (filters.careTypes.length !== 0) {
 		filteredProductsList = productsList.filter(product => isSubarray(product.careTypes, filters.careTypes));
 	}
