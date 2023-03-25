@@ -1,6 +1,6 @@
 export interface FilterState {
-	price_min: number;
-	price_max: number;
+	price_min: string;
+	price_max: string;
 	manufacturersList: string[];
 	careTypes: string[];
 }

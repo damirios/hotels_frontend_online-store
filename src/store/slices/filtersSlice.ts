@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit"
 import { FilterState } from "../../types/filter"
 
 const initialState: FilterState = {
-    price_min: 0,
-    price_max: 10000,
+    price_min: '',
+    price_max: '',
     manufacturersList: [],
     careTypes: []
 }
@@ -23,6 +23,12 @@ const filterSlice = createSlice({
             state.manufacturersList = action.payload.list;
             state.price_min = action.payload.price_min;
             state.price_max = action.payload.price_max;
+        },
+        resetFilters(state) {
+            state.careTypes = [];
+            state.price_max = '';
+            state.price_min = '';
+            state.manufacturersList = [];
         }
     }
 });
@@ -30,7 +36,8 @@ const filterSlice = createSlice({
 export const {
     addCareType,
     removeCareType,
-    setFilters
+    setFilters,
+    resetFilters
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

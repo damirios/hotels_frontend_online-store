@@ -2,34 +2,32 @@ import React, { useState } from "react";
 import { FiltersTop } from "./FiltersTop";
 import { filterFields } from "../../data/filterFields";
 import { useTypedDispatch } from "../../hooks/useTypedDispatch";
-import { setFilters } from "../../store/slices/filtersSlice";
+import { resetFilters, setFilters } from "../../store/slices/filtersSlice";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export function SidebarFilters(props: {allManufacturers: string[], clickHandler: any}) {
-    const initialFilters = useTypedSelector(state => state.filters);
+    const filters = useTypedSelector(state => state.filters);
 
-    const [minValue, setMinValue] = useState(initialFilters.price_min);
-    const [maxValue, setMaxValue] = useState(initialFilters.price_max);
+    const [minValue, setMinValue] = useState<string>(filters.price_min);
+    const [maxValue, setMaxValue] = useState<string>(filters.price_max);
     const [manufacturerInput, setManufacturerInput] = useState('');
     const [allManufacturers, setAllManufacturers] = useState(props.allManufacturers);
     const [allShown, setAllShown] = useState(false);
     const [maxShownItems, setMaxShownItems] = useState(4);
-    const [selectedManufacturers, setSelectedManufacturers] = useState<string[]>(initialFilters.manufacturersList);
+    const [selectedManufacturers, setSelectedManufacturers] = useState<string[]>(filters.manufacturersList);
 
     const dispatch = useTypedDispatch();
-
 
     function handlePriceChange(e: { target: HTMLInputElement }) {
         const name = e.target.name;
         const valueStr = e.target.value;
-        const value = +valueStr;
 
         if (name === 'price_min') {
-            setMinValue(value);
+            setMinValue(valueStr);
         } else if (name === 'price_max') {
-            setMaxValue(value);
-            if (minValue > value) {
-                setMinValue(value);
+            setMaxValue(valueStr);
+            if (minValue && minValue > valueStr) {
+                setMinValue(valueStr);
             }
         }
     }
@@ -61,14 +59,25 @@ export function SidebarFilters(props: {allManufacturers: string[], clickHandler:
         dispatch(setFilters({list: selectedManufacturers, price_min: minValue, price_max: maxValue}));
     }
 
+    function handleFiltersReset(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        dispatch(resetFilters());
+        setManufacturerInput('');
+        setAllShown(false);
+        setSelectedManufacturers([]);
+        setMinValue('');
+        setMaxValue('');
+    }
+
     return (
         <div className="catalog-content__sidebar sidebar">
             <h1 className="sidebar__title">Подбор по параметрам</h1>
-            <form className="sidebar__form" onSubmit={handleFilterSubmit}>
+            <form className="sidebar__form" onSubmit={handleFilterSubmit} onReset={handleFiltersReset}>
                 <div className="sidebar__price">
                     <label htmlFor="price-min">Цена <span>руб.</span></label>
                     <div className="sidebar__price_inputs-box">
-                        <input min={0} type="number" onChange={handlePriceChange} value={minValue} placeholder='0' 
+                        <input min={0} type="number" onChange={handlePriceChange} 
+                            value={minValue} placeholder='0' 
                             name="price_min" id="price-min" />
                         <span>-</span>
                         <input min={0} type="number" onChange={handlePriceChange} value={maxValue} placeholder='10 000' 
@@ -85,15 +94,16 @@ export function SidebarFilters(props: {allManufacturers: string[], clickHandler:
                             return (
                                 <li key={item} className={(index >= maxShownItems && !allShown) ? 'hide' : ''}>
                                     <input type="checkbox" id={`manufacturer_${item}`} onChange={handleCheckboxChange}
-                                        name="manufacturers" value={item} />
+                                        name="manufacturers" value={item} checked={selectedManufacturers.includes(item)} />
                                     <label htmlFor={`manufacturer_${item}`}>{item}</label>
                                 </li>
                             );
                         })}
                     </ul>
+                    {allManufacturers.length > maxShownItems ? 
                     <p className="sidebar__manufacturer_show-hide" onClick={handleShowHideClick}>
                         {allShown ? "Свернуть" : "Показать всё"}
-                    </p>
+                    </p> : null}
                 </div>
                 <div className="sidebar__controls">
                     <button type="submit" className="sidebar__submit">Показать</button>

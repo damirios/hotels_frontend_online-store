@@ -1709,11 +1709,14 @@ a:hover {
   max-width: 100px;
   font-size: 12px;
   line-height: 121%;
-  font-weight: 300;
+  font-weight: 500;
   color: #3F4E65;
   border: 0;
   border-radius: 1000px;
   background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+}
+.sidebar__price_inputs-box input::placeholder {
+  color: rgba(63, 78, 101, 0.5);
 }
 .sidebar__price_inputs-box input:focus {
   border: 0;

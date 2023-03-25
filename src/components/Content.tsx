@@ -16,10 +16,21 @@ export function Content(props: {breadcrumbs?: string}) {
 	
 	const allManufacturers = Array.from(new Set(productsList.map(item => item.manufacturer)));
 	
-	let filteredProductsList = null;
 	// фильтруем список товаров
 	if (filters.careTypes.length !== 0) {
-		filteredProductsList = productsList.filter(product => isSubarray(product.careTypes, filters.careTypes));
+		productsList = productsList.filter(product => isSubarray(product.careTypes, filters.careTypes));
+	}
+	if (filters.manufacturersList.length !== 0) {
+		productsList = productsList.filter(product => filters.manufacturersList.includes(product.manufacturer));
+	}
+	if (filters.price_min.trim().length > 0) {
+		const minPrice = +filters.price_min.trim();
+		const maxPrice = filters.price_max.trim().length > 0 ? +filters.price_max.trim() : null;
+		productsList = productsList.filter(product => product.price >= minPrice && (maxPrice === null || product.price <= maxPrice));
+	} else if (filters.price_max.trim().length > 0) {
+		const minPrice = 0;
+		const maxPrice = +filters.price_max.trim();
+		productsList = productsList.filter(product => product.price >= minPrice && product.price <= maxPrice);
 	}
 
 
@@ -72,7 +83,7 @@ export function Content(props: {breadcrumbs?: string}) {
 							list={filterFields} />
 						{/* <div className="catalog-content__filters-top"></div> */}
 						<SidebarFilters allManufacturers={allManufacturers} clickHandler={handleCareTypeFilterClick} />
-						<Products list={filteredProductsList || productsList} />
+						<Products list={productsList} />
 						<div className="catalog-content__pagination pagination">1 2 3 4 5</div>
 						<div className="catalog-content__bottom-info">bottom info</div>
 					</div>
