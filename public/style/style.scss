@@ -1624,12 +1624,13 @@ a {
 
 // CATALOG-CONTENT ====================================================================================================================
 .catalog-content {
+	padding: 0 0 100px;
 
 
 	&__menu {
 		display: grid;
 		grid-template-columns: 230px 1fr;
-		grid-template-rows: minmax(48px, 60px) minmax(70px, 80px) minmax(40px, 70px) 1fr minmax(35px, 45px) minmax(60px, 100px);
+		grid-template-rows: minmax(48px, 60px) minmax(70px, 80px) minmax(40px, 70px) 1fr minmax(35px, 60px) minmax(60px, 100px);
 	}
 
 	&__top {
@@ -2168,5 +2169,45 @@ a {
 			max-width: 20px;
 			max-height: 20px;
 		}
+	}
+}
+
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&__row {
+		display: flex;
+		align-items: center;
+		column-gap: 35px;
+	}
+
+	&__prev, &__next {
+		cursor: pointer;
+	}
+
+	&__list {
+		display: flex;
+		align-items: center;
+		column-gap: 7px;
+	}
+
+	&__item {
+		width: 35px;
+		height: 35px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 14px;
+		line-height: (18.2px / 14px) * 100%;
+		font-weight: 500;
+		color: $color2;
+		cursor: pointer;
+	}
+
+	&__item._current {
+		background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
 	}
 }

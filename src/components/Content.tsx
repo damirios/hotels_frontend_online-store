@@ -3,15 +3,15 @@ import { filterFields } from "../data/filterFields";
 import { FiltersTop } from "./Filters/FiltersTop";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
-import { fetchProducts } from "../store/slices/productSlice";
 import { Products } from "./Products";
 import { SidebarFilters } from "./Filters/SidebarFilters";
 import { addCareType, removeCareType } from "../store/slices/filtersSlice";
 import { isSubarray } from "../utilityFunctions/isSubarray";
 import { SelectedFilters } from "./UI/SelectedFilters";
+import { Pagination } from "./Pagination";
 
 export function Content(props: {breadcrumbs?: string}) {
-	let productsList = useTypedSelector(state => state.products.list);
+	let productsList = useTypedSelector(state => state.products.listToShow);
 	const filters = useTypedSelector(state => state.filters);
 	const dispatch = useTypedDispatch();
 	
@@ -81,7 +81,7 @@ export function Content(props: {breadcrumbs?: string}) {
 						<SelectedFilters />
 						<SidebarFilters allManufacturers={allManufacturers} clickHandler={handleCareTypeFilterClick} />
 						<Products list={productsList} />
-						<div className="catalog-content__pagination pagination">1 2 3 4 5</div>
+						<Pagination />
 						<div className="catalog-content__bottom-info">bottom info</div>
 					</div>
 				</div>
