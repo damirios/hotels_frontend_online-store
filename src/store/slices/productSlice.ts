@@ -16,6 +16,19 @@ const productsSlice = createSlice({
 		getAllProducts(state, action) {
 			console.log('payload: ', action);
 			// state.list = products;
+		},
+		sortProducts(state, action: PayloadAction<{sortParam: string, sortOrder: string}>) {
+			const {sortParam, sortOrder} = action.payload;
+			const coef = sortOrder === 'asc' ? 1 : -1;
+			state.list.sort(function(a, b): number {
+				if (sortParam === 'title' || sortParam === 'price') {
+					if (a[sortParam] < b[sortParam]) {
+						return -1 * coef;
+					}
+					return 1 * coef;
+				}
+				return 1;
+			});
 		}
 	},
 	extraReducers: (builder) => {
@@ -50,7 +63,8 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
 });
 
 export const {
-	getAllProducts
+	getAllProducts,
+	sortProducts
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

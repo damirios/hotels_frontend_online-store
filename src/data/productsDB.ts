@@ -36,7 +36,7 @@ const ariel_1: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76,
+    price: 42.76,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -49,7 +49,7 @@ const bimax_1: ProductType = {
     manufacturer: 'Нэфис2',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76,
+    price: 33,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -75,7 +75,7 @@ const aos_2: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76,
+    price: 59,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -88,7 +88,7 @@ const ariel_2: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76,
+    price: 55.76,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -140,7 +140,7 @@ const ariel_3: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76,
+    price: 32.76,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -166,7 +166,7 @@ const sorti_4: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76,
+    price: 480.76,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -205,7 +205,7 @@ const bimax_4: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76,
+    price: 4.76,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -267,4 +267,4 @@ export const productsDB: ProductType[] = [
     sorti_3, aos_3, ariel_3, bimax_3,
     sorti_4, aos_4, ariel_4, bimax_4,
     sorti_5, aos_5, ariel_5, bimax_5
-];
+].sort((a, b) => a.title < b.title ? -1 : 1);
