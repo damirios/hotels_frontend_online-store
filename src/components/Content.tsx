@@ -8,6 +8,7 @@ import { Products } from "./Products";
 import { SidebarFilters } from "./Filters/SidebarFilters";
 import { addCareType, removeCareType } from "../store/slices/filtersSlice";
 import { isSubarray } from "../utilityFunctions/isSubarray";
+import { SelectedFilters } from "./UI/SelectedFilters";
 
 export function Content(props: {breadcrumbs?: string}) {
 	let productsList = useTypedSelector(state => state.products.list);
@@ -31,11 +32,6 @@ export function Content(props: {breadcrumbs?: string}) {
 		const minPrice = 0;
 		const maxPrice = +filters.price_max.trim();
 		productsList = productsList.filter(product => product.price >= minPrice && product.price <= maxPrice);
-	}
-
-
-	function handle() {
-		dispatch(fetchProducts());
 	}
 
 	function handleCareTypeFilterClick(e: { target: HTMLInputElement }) {
@@ -82,6 +78,7 @@ export function Content(props: {breadcrumbs?: string}) {
 						<FiltersTop className='catalog-content__filters-top' clickHandler={handleCareTypeFilterClick} 
 							list={filterFields} />
 						{/* <div className="catalog-content__filters-top"></div> */}
+						<SelectedFilters />
 						<SidebarFilters allManufacturers={allManufacturers} clickHandler={handleCareTypeFilterClick} />
 						<Products list={productsList} />
 						<div className="catalog-content__pagination pagination">1 2 3 4 5</div>
