@@ -1611,8 +1611,21 @@ a {
 }
 
 // CATALOG-CONTENT ====================================================================================================================
+.content {
+	@media (max-width: 997px) {
+		padding: 103px 15px 0;
+	}
+
+	&__breadcrumbs {
+		@media (max-width: 997px) {
+			display: none;
+		}
+	}
+}
+
 .catalog-content {
 	padding: 0 0 100px;
+	
 
 
 	&__menu {
@@ -1626,6 +1639,10 @@ a {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		@media (max-width: 997px) {
+			margin-bottom: 10px;
+		}
 	}
 
 	&__title {
@@ -1634,6 +1651,10 @@ a {
 		font-weight: 500;
 		color: $color1;
 		text-transform: uppercase;
+
+		@media (max-width: 997px) {
+			font-size: 32px;
+		}
 	}
 
 	&__sort {}
@@ -1689,6 +1710,10 @@ a {
 		font-weight: 500;
 		line-height: 150%;
 		color: $color1;
+
+		@media (max-width: 997px) {
+			font-size: 14px;
+		}
 	}
 
 	// .sort-content__select
@@ -1702,6 +1727,10 @@ a {
 		line-height: 150%;
 		color: $color2;
 		cursor: pointer;
+
+		@media (max-width: 997px) {
+			font-size: 14px;
+		}
 	}
 
 	// .sort-content__option
@@ -1885,6 +1914,21 @@ a {
 		max-width: 370px;
 	}
 
+	@media (max-width: 997px) {
+		flex-direction: row;
+		max-width: 100%;
+		column-gap: 10px;
+	}
+	
+
+	&__info {
+		@media (max-width: 997px) {
+			display: flex;
+			flex-direction: column;
+			row-gap: 5px;
+		}
+	}
+
 	&__image-box {
 		flex: 1 1 220px;
 		display: flex;
@@ -1902,6 +1946,11 @@ a {
 		display: flex;
 		column-gap: 5px;
 		margin-bottom: 10px;
+
+		@media (max-width: 997px) {
+			margin-bottom: 0;
+			order: 6;
+		}
 
 		& img {
 			max-width: 20px;
@@ -1925,6 +1974,11 @@ a {
 		text-decoration: none;
 		margin-bottom: 5px;
 
+		@media (max-width: 997px) {
+			margin-bottom: 0;
+			order: 1;
+		}
+
 		& span {
 			font-weight: 700;
 			text-transform: uppercase;
@@ -1937,6 +1991,11 @@ a {
 		color: $color2;
 		margin-bottom: 15px;
 		font-size: 12px;
+
+		@media (max-width: 997px) {
+			margin-bottom: 0;
+			order: 2;
+		}
 
 		& span {
 			font-weight: 500;
@@ -1954,14 +2013,39 @@ a {
 		}
 	}
 
+	&__barcode {
+		@media (max-width: 997px) {
+			margin-bottom: 0;
+			order: 3;
+		}
+	}
+
+	&__manufacturer {
+		@media (max-width: 997px) {
+			margin-bottom: 0;
+			order: 4;
+		}
+	}
+
 	&__brand {
 		margin-bottom: 15px;
+
+		@media (max-width: 997px) {
+			margin-bottom: 10px;
+			order: 5;
+		}
 	}
 
 	&__purchase-block {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		@media (max-width: 997px) {
+			margin-bottom: 0;
+			order: 7;
+			margin-top: auto;
+		}
 	}
 
 	&__price {
