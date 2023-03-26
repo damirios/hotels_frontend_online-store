@@ -956,17 +956,6 @@ a:hover {
     width: 100%;
   }
 }
-.content {
-  font-size: 20px;
-  line-height: 120%;
-}
-@media (max-width: 768px) {
-  .content {
-    margin-top: 103px;
-    background-color: #0f0;
-  }
-}
-
 .footer {
   background-color: #3F4E65;
   color: #fff;
@@ -1492,13 +1481,21 @@ a:hover {
 .catalog-content__products {
   grid-area: 4/2/-3/-1;
 }
+.catalog-content__loading {
+  padding-top: 100px;
+  letter-spacing: 1px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  color: orange;
+  text-decoration: underline;
+}
 .catalog-content__pagination {
   grid-area: -3/2/-2/-1;
 }
 .catalog-content__bottom-info {
   grid-area: -2/2/-1/-1;
 }
-
 .sort-content__label {
   font-size: 16px;
   font-weight: 500;
@@ -1524,6 +1521,13 @@ a:hover {
   display: flex;
   justify-content: space-between;
   column-gap: 10px;
+}
+@media (max-width: 1225px) {
+  .filters-top__list.top-only {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(6, auto);
+  }
 }
 .filters-top__item {
   padding: 14px 6px;
@@ -1614,6 +1618,26 @@ a:hover {
   gap: 15px;
   justify-content: space-between;
 }
+@media (max-width: 1225px) {
+  .products__list {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media (max-width: 997px) {
+  .products__list {
+    display: flex;
+    flex-direction: column;
+    column-gap: 20px;
+    align-items: center;
+  }
+}
+.products__empty {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
 .single-product {
   max-width: 326px;
   border-radius: 10px;
@@ -1622,6 +1646,11 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+@media (max-width: 1225px) {
+  .single-product {
+    max-width: 370px;
+  }
 }
 .single-product__image-box {
   flex: 1 1 220px;
@@ -1909,7 +1938,7 @@ a:hover {
   align-items: center;
   column-gap: 7px;
 }
-.pagination__item {
+.pagination__item button {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -1921,7 +1950,21 @@ a:hover {
   font-weight: 500;
   color: #3F4E65;
   cursor: pointer;
+  border: 0;
+  background-color: transparent;
 }
-.pagination__item._current {
+.pagination__item button:focus {
+  border: 0;
+  outline: none;
+}
+.pagination__item button._current {
   background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+}
+
+.bottom-info {
+  padding-top: 68px;
+  font-size: 14px;
+  line-height: 150%;
+  color: #3F4E65;
+  max-width: 910px;
 }

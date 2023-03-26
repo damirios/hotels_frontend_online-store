@@ -1,42 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { setShowProductsRange } from "../store/slices/productSlice";
+import { setPageTo } from "../store/slices/paginationSlice";
 
 export function Pagination() {
     const products = useTypedSelector(state => state.products); 
     const pagination = useTypedSelector(state => state.pagination);
     
-    const [currentPage, setCurrentPage] = useState(1);
+    const currentPage = pagination.currentPage;
+    const navigate = useNavigate();
     const dispatch = useTypedDispatch();
     
     const numberOfPages = Math.ceil(products.list.length / pagination.visibleProductsNumber);
     const keys = Array.from(Array(numberOfPages).keys());
-
-    useEffect(() => {
-        const fromProductNumber = (currentPage - 1) * pagination.visibleProductsNumber;
-        const toProductNumber = fromProductNumber + pagination.visibleProductsNumber < products.list.length ? 
-            fromProductNumber + pagination.visibleProductsNumber : products.list.length;
-
-        dispatch(setShowProductsRange({from: fromProductNumber, to: toProductNumber}));
-    }, [currentPage]);
     
     function handlePrevClick() {
         if (currentPage !== 1) {
-            setCurrentPage(currentPage - 1);
+            const newPage = currentPage - 1;
+            if (newPage === 1) {
+                navigate("/");
+            } else {
+                navigate(`?page=${newPage}`);
+                dispatch(setPageTo(newPage));
+            }
         }
     }
 
     function handleNextClick() {
         if (currentPage !== numberOfPages) {
-            setCurrentPage(currentPage + 1);
+            navigate(`?page=${currentPage + 1}`);
+            dispatch(setPageTo(currentPage + 1));
         }
     }
 
     function handleArbitraryPageClick(e: React.MouseEvent<HTMLButtonElement>) {
         const pageNumber = (e.target as HTMLInputElement).dataset.pageNumber;
         if (pageNumber) {
-            setCurrentPage(+pageNumber);
+            if (+pageNumber === 1) {
+                navigate("/");
+            } else {
+                navigate(`/?page=${pageNumber}`);
+            }
+            dispatch(setPageTo(+pageNumber));
         }
     }
 
@@ -50,7 +56,9 @@ export function Pagination() {
                     <ul className="pagination__list">
                         {keys.map(key => <li className="pagination__item" 
                             key={key}  >
-                                <button data-page-number={key + 1} onClick={handleArbitraryPageClick}>{key + 1}</button>
+                                <button className={`${currentPage === key + 1 ? "_current" : ''}`} data-page-number={key + 1} onClick={handleArbitraryPageClick}>
+                                    {key + 1}
+                                </button>
                             </li>)}
                     </ul>
                     <div className="pagination__next" onClick={handleNextClick}>

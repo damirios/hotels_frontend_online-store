@@ -10,7 +10,7 @@ const sorti_1: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76,
+    price: 5000,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -23,7 +23,7 @@ const aos_1: ProductType = {
     manufacturer: 'Нэфис1',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76,
+    price: 1111,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -36,7 +36,7 @@ const ariel_1: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 42.76,
+    price: 1200,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -49,7 +49,7 @@ const bimax_1: ProductType = {
     manufacturer: 'Нэфис2',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 33,
+    price: 590,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -62,7 +62,7 @@ const sorti_2: ProductType = {
     manufacturer: 'Вим биль дан',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76,
+    price: 431,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -75,7 +75,7 @@ const aos_2: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 59,
+    price: 235,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -88,7 +88,7 @@ const ariel_2: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 55.76,
+    price: 200,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -101,7 +101,7 @@ const bimax_2: ProductType = {
     manufacturer: 'Султан',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76,
+    price: 130,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -114,7 +114,7 @@ const sorti_3: ProductType = {
     manufacturer: 'Султан',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76,
+    price: 120,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -127,7 +127,7 @@ const aos_3: ProductType = {
     manufacturer: 'Султан',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76,
+    price: 110,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -140,7 +140,7 @@ const ariel_3: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 32.76,
+    price: 100,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -153,7 +153,7 @@ const bimax_3: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76,
+    price: 90,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -166,7 +166,7 @@ const sorti_4: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 480.76,
+    price: 70,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -179,7 +179,7 @@ const aos_4: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76,
+    price: 80,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -192,7 +192,7 @@ const ariel_4: ProductType = {
     manufacturer: 'Дино',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76,
+    price: 60,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -205,7 +205,7 @@ const bimax_4: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 4.76,
+    price: 50,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -218,7 +218,7 @@ const sorti_5: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Ср-во для мытья посуды. Апельсин + мята',
-    price: 48.76,
+    price: 40,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -231,7 +231,7 @@ const aos_5: ProductType = {
     manufacturer: 'Дино',
     brand: 'AOS',
     description: 'Средство для мытья посуды. Crystal',
-    price: 48.76,
+    price: 30,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -244,7 +244,7 @@ const ariel_5: ProductType = {
     manufacturer: 'Нэфис',
     brand: 'AOS',
     description: 'Автомат. Гель СМС жидкое в растворимых капсулах Liquid Capsules. Горный родник',
-    price: 48.76,
+    price: 20,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 
@@ -257,7 +257,7 @@ const bimax_5: ProductType = {
     manufacturer: 'Водный дом',
     brand: 'AOS',
     description: 'Порошок стиральный. Автомат. 100 пятен COMPACT',
-    price: 48.76,
+    price: 10,
     careTypes: ['body', 'hand', 'hair', 'face', 'tan']
 }
 

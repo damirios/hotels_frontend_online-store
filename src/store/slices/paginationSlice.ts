@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const paginationInitialState = {
-    visibleProductsNumber: 7
+    visibleProductsNumber: 6,
+    currentPage: 1
 };
 
 const paginationSlice = createSlice({
@@ -10,12 +11,16 @@ const paginationSlice = createSlice({
     reducers: {
         setVisibleProductsNumber(state, action) {
             state.visibleProductsNumber = action.payload;
+        },
+        setPageTo(state, action) {
+            state.currentPage = action.payload;
         }
     }
 });
 
 export const {
     setVisibleProductsNumber,
+    setPageTo
 } = paginationSlice.actions;
 
 export default paginationSlice.reducer;

@@ -4,6 +4,8 @@ import { filterFields } from "../../data/filterFields";
 import { useTypedDispatch } from "../../hooks/useTypedDispatch";
 import { resetFilters, setFilters } from "../../store/slices/filtersSlice";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { setPageTo } from "../../store/slices/paginationSlice";
+import { useNavigate } from "react-router-dom";
 
 export function SidebarFilters(props: {allManufacturers: string[], clickHandler: any}) {
     const filters = useTypedSelector(state => state.filters);
@@ -17,6 +19,7 @@ export function SidebarFilters(props: {allManufacturers: string[], clickHandler:
     const [selectedManufacturers, setSelectedManufacturers] = useState<string[]>(filters.manufacturersList);
 
     const dispatch = useTypedDispatch();
+    const navigate = useNavigate();
 
     function handlePriceChange(e: { target: HTMLInputElement }) {
         const name = e.target.name;
@@ -57,6 +60,8 @@ export function SidebarFilters(props: {allManufacturers: string[], clickHandler:
     function handleFilterSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         dispatch(setFilters({list: selectedManufacturers, price_min: minValue, price_max: maxValue}));
+        dispatch(setPageTo(1));
+        navigate("/");
     }
 
     function handleFiltersReset(e: React.FormEvent<HTMLFormElement>) {

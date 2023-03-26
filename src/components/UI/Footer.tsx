@@ -54,10 +54,10 @@ export function Footer() {
 						<ContactsPhone isMobile={false} class='contacts' />
 						<MailLink image={false} class='contacts' />
 						<div className="contacts__cards">
-							<a href="#">
+							<a href="/">
 								<img src="/images/icons/visa.svg" alt="visa" />
 							</a>
-							<a href="#">
+							<a href="/">
 								<img src="/images/icons/masterCard.svg" alt="masterCard" />
 							</a>
 						</div>

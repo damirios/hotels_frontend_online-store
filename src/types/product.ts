@@ -2,7 +2,7 @@ import { ProductType } from "./productDBType";
 
 export interface ProductsState {
 	list: ProductType[];
-	listToShow: ProductType[];
+	pageList: ProductType[];
 	loading: boolean;
 	error: null | string;
 	status: 'loading' | 'loaded' | 'failed' | 'idle';

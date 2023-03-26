@@ -12,12 +12,8 @@ const filterSlice = createSlice({
     name: 'filters',
     initialState: initialState as FilterState,
     reducers: {
-        addCareType(state, action) {
-            state.careTypes.push(action.payload);
-        },
-        removeCareType(state, action) {
-            const index = state.careTypes.findIndex(el => el === action.payload);
-            state.careTypes.splice(index, 1);
+        setCareTypesFilter(state, action) {
+            state.careTypes = action.payload;
         },
         setFilters(state, action) {
             state.manufacturersList = action.payload.list;
@@ -34,8 +30,7 @@ const filterSlice = createSlice({
 });
 
 export const {
-    addCareType,
-    removeCareType,
+    setCareTypesFilter,
     setFilters,
     resetFilters
 } = filterSlice.actions;

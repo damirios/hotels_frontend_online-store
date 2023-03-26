@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTypedDispatch } from "../../hooks/useTypedDispatch";
-import { sortProducts } from "../../store/slices/productSlice";
+import { setPageTo } from "../../store/slices/paginationSlice";
+import { setSortState } from "../../store/slices/sortSlice";
 
 export function Sort() {
     const [selectOption, setSelectOption] = useState('title_asc');
     const dispatch = useTypedDispatch();
-    
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const [sortParam, sortOrder] = selectOption.split('_');
+        dispatch(setSortState({order: sortOrder, param: sortParam}));
+        dispatch(setPageTo(1));
+        navigate("/");
+
+    }, [selectOption]);
 
     function handleSelect(e: React.ChangeEvent<HTMLSelectElement>) {
         const value = e.target.value;
         setSelectOption(value);
-
-        const [sortParam, sortOrder] = value.split('_');
-        dispatch(sortProducts({sortParam, sortOrder}));
     }
 
     return (

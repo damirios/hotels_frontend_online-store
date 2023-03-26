@@ -5,65 +5,101 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { Products } from "./Products";
 import { SidebarFilters } from "./Filters/SidebarFilters";
-import { addCareType, removeCareType } from "../store/slices/filtersSlice";
-import { isSubarray } from "../utilityFunctions/isSubarray";
+import { setCareTypesFilter } from "../store/slices/filtersSlice";
 import { SelectedFilters } from "./UI/SelectedFilters";
 import { Pagination } from "./Pagination";
+import { fetchProducts, fetchPageProducts, sortProducts } from "../store/slices/productSlice";
+import { useEffect, useState } from "react";
 
 export function Content(props: {breadcrumbs?: string}) {
-	let productsList = useTypedSelector(state => state.products.listToShow);
+	const productsState = useTypedSelector(state => state.products);
 	const filters = useTypedSelector(state => state.filters);
+	const pagination = useTypedSelector(state => state.pagination);
+	const sort = useTypedSelector(state => state.sort);
 	const dispatch = useTypedDispatch();
-	
+
+	let productsList = productsState.list;
 	const allManufacturers = Array.from(new Set(productsList.map(item => item.manufacturer)));
-	
-	// фильтруем список товаров
-	if (filters.careTypes.length !== 0) {
-		productsList = productsList.filter(product => isSubarray(product.careTypes, filters.careTypes));
-	}
-	if (filters.manufacturersList.length !== 0) {
-		productsList = productsList.filter(product => filters.manufacturersList.includes(product.manufacturer));
-	}
-	if (filters.price_min.trim().length > 0) {
-		const minPrice = +filters.price_min.trim();
-		const maxPrice = filters.price_max.trim().length > 0 ? +filters.price_max.trim() : null;
-		productsList = productsList.filter(product => product.price >= minPrice && (maxPrice === null || product.price <= maxPrice));
-	} else if (filters.price_max.trim().length > 0) {
-		const minPrice = 0;
-		const maxPrice = +filters.price_max.trim();
-		productsList = productsList.filter(product => product.price >= minPrice && product.price <= maxPrice);
-	}
+
+	const [firstRenderDone, setFirstRenderDone] = useState(false);
+	const [firstRenderDoneFiltered, setFirstRenderDoneFiltered] = useState(false);
+
+	useEffect(() => {
+		if (firstRenderDone) {
+			dispatch(fetchProducts({
+				maxPrice: filters.price_max,
+				minPrice: filters.price_min,
+				selectedManufacturers: filters.manufacturersList,
+				careTypes: filters.careTypes,
+				shownProductsNumber: pagination.visibleProductsNumber,
+				page: pagination.currentPage,
+				sortParams: {
+					order: sort.order,
+					param: sort.param
+				}
+			}));
+		} else {
+			setFirstRenderDone(true);
+		}
+	}, [filters]);
+
+	useEffect(() => {
+		dispatch(sortProducts({
+			sortParam: sort.param,
+			sortOrder: sort.order
+		}));
+	}, [sort]);
+
+	useEffect(() => {
+		if (firstRenderDoneFiltered) {
+			dispatch(fetchPageProducts({
+				page: pagination.currentPage,
+				productsNumber: pagination.visibleProductsNumber
+			}));		
+		} else {
+			setFirstRenderDoneFiltered(true);
+		}
+	}, [pagination]);
 
 	function handleCareTypeFilterClick(e: { target: HTMLInputElement }) {
 		const clickedFilter = e.target;
 		const filterValue = clickedFilter.dataset.value;
+		const careTypes = filters.careTypes;
 
 		if (filterValue) {
-			const isActive = filters.careTypes.includes(filterValue);
+			const isActive = careTypes.includes(filterValue);
 			if (isActive) {
-				dispatch(removeCareType(filterValue));
+				const index = careTypes.findIndex(el => el === filterValue);
+				if (index === 0) {
+					dispatch(setCareTypesFilter(careTypes.slice(1, careTypes.length)));
+				} else if (index === careTypes.length - 1) {
+					dispatch(setCareTypesFilter(careTypes.slice(0, careTypes.length - 1)));
+				} else {
+					dispatch(setCareTypesFilter(careTypes.slice(0, index).concat(careTypes.slice(index + 1, careTypes.length))));
+				}
 			} else {
-				dispatch(addCareType(filterValue));
+				dispatch(setCareTypesFilter([...careTypes, filterValue]));
 			}
 		}
 	}
-	
+
+
 	return(
 		<main className="content">
 			<div className="content__breadcrumbs breadcrumbs">
 				<div className="container">
 					<ul className="breadcrumbs__list">
 						<li className="breadcrumbs__item">
-							<a href="#">Главная</a>
+							<a href="/">Главная</a>
 						</li>
 						<li className="breadcrumbs__item">
-							<a href="#">Главная</a>
+							<a href="/">Главная</a>
 						</li>
 						<li className="breadcrumbs__item">
-							<a href="#">Главная</a>
+							<a href="/">Главная</a>
 						</li>
 						<li className="breadcrumbs__item">
-							<a href="#">Главная</a>
+							<a href="/">Главная</a>
 						</li>
 					</ul>
 				</div>
@@ -75,14 +111,18 @@ export function Content(props: {breadcrumbs?: string}) {
 							<div className="catalog-content__title">Косметика и гигиена <span>{}</span></div>
 							<Sort />
 						</div>
-						<FiltersTop className='catalog-content__filters-top' clickHandler={handleCareTypeFilterClick} 
+						<FiltersTop top={true} className='catalog-content__filters-top' clickHandler={handleCareTypeFilterClick} 
 							list={filterFields} />
-						{/* <div className="catalog-content__filters-top"></div> */}
 						<SelectedFilters />
 						<SidebarFilters allManufacturers={allManufacturers} clickHandler={handleCareTypeFilterClick} />
-						<Products list={productsList} />
+						<Products />
 						<Pagination />
-						<div className="catalog-content__bottom-info">bottom info</div>
+						<div className="catalog-content__bottom-info bottom-info">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, 
+							vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. 
+							Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. 
+							Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.
+						</div>
 					</div>
 				</div>
 			</div>

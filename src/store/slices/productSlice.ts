@@ -1,11 +1,12 @@
 import { ProductsState } from "../../types/product";
 import { productsDB } from "../../data/productsDB";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { isSubarray } from '../../utilityFunctions/isSubarray';
 import { paginationInitialState } from "./paginationSlice";
 
 const initialState: ProductsState = {
 	list: [...productsDB],
-	listToShow: productsDB.slice(0, paginationInitialState.visibleProductsNumber),
+	pageList: [...productsDB].slice(0, paginationInitialState.visibleProductsNumber),
 	loading: false,
 	error: null,
 	status: 'idle'
@@ -18,7 +19,7 @@ const productsSlice = createSlice({
 		sortProducts(state, action: PayloadAction<{sortParam: string, sortOrder: string}>) {
 			const {sortParam, sortOrder} = action.payload;
 			const coef = sortOrder === 'asc' ? 1 : -1;
-			state.listToShow.sort(function(a, b): number {
+			state.list.sort(function(a, b): number {
 				if (sortParam === 'title' || sortParam === 'price') {
 					if (a[sortParam] < b[sortParam]) {
 						return -1 * coef;
@@ -27,17 +28,22 @@ const productsSlice = createSlice({
 				}
 				return 1;
 			});
+			state.pageList = state.list.slice(0, paginationInitialState.visibleProductsNumber);
 		},
-		setShowProductsRange(state, action) {
-			state.listToShow = state.list.slice(action.payload.from, action.payload.to);
+		fetchPageProducts(state, action) {
+			const {page, productsNumber} = action.payload;
+			const firstProductIndex = (page - 1) * productsNumber;
+			const lastProductIndex = productsNumber * page > state.list.length ? state.list.length : productsNumber * page;
+			state.pageList = state.list.slice(firstProductIndex, lastProductIndex);
 		}
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchProducts.pending, (state) => {
+		builder.addCase(fetchProducts.pending, (state, action) => {
 			state.status = 'loading';
 		}).addCase(fetchProducts.fulfilled, (state, action: PayloadAction<any>) => {
 			state.status = 'loaded';
-			state.list = action.payload;
+			state.list = action.payload.list;
+			state.pageList = action.payload.pageList;
 			
 		}).addCase(fetchProducts.rejected, (state, action: PayloadAction<any>) => {
 			state.status = 'loaded';
@@ -47,9 +53,70 @@ const productsSlice = createSlice({
 	}
 });
 
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
+type FetchProductsParamsType = {
+	maxPrice: string;
+	minPrice: string;
+	selectedManufacturers: string[];
+	careTypes: string[];
+	shownProductsNumber: number;
+	page: number;
+	sortParams?: {
+		order: string,
+		param: string
+	}
+}
+
+export const fetchProducts = createAsyncThunk('products/fetchProducts', async (params: FetchProductsParamsType) => {
+	const {page, maxPrice, minPrice, selectedManufacturers, shownProductsNumber, careTypes, sortParams} = params;
+	let allProducts = [...productsDB];
+	if (sortParams) {
+		allProducts.sort((a, b) => {
+			const coef = sortParams.order === 'asc' ? 1 : -1;
+			if (sortParams.param === 'title') {
+				if (a.title < b.title) {
+					return -1 * coef;
+				} else {
+					return 1 * coef;
+				}
+			} else if (sortParams.param === 'price') {
+				if (a.price < b.price) {
+					return -1 * coef;
+				} else {
+					return 1 * coef;
+				}
+			}
+			return 1;
+		});
+	}
+	
+	// по макс. цене
+	if (params.maxPrice !== '') {
+		allProducts = allProducts.filter(product => product.price <= +maxPrice);
+	}
+	// по мин. цене
+	if (params.minPrice !== '') {
+		allProducts = allProducts.filter(product => product.price >= +minPrice);
+	}
+	// по производителям
+	if (params.selectedManufacturers.length !== 0) {
+		allProducts = allProducts.filter(product => selectedManufacturers.includes(product.manufacturer));
+	}
+	// по типам ухода
+	if (params.careTypes.length !== 0) {
+		allProducts = allProducts.filter(product => isSubarray(product.careTypes, careTypes));
+	}
+
+	const firstProductIndex = (page - 1) * shownProductsNumber;
+	const lastProductIndex = shownProductsNumber * page > allProducts.length ? allProducts.length : shownProductsNumber * page;
+	// по страницам
+	const productsToShow = allProducts.slice(firstProductIndex, lastProductIndex);
+
+
 	const listPromise = new Promise(resolve => {
-		setTimeout(() => resolve(productsDB), 500); 
+		setTimeout(() => resolve({
+			list: allProducts,
+			pageList: productsToShow
+		}), 700); 
 	});
 
 	return listPromise;
@@ -57,7 +124,7 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
 
 export const {
 	sortProducts,
-	setShowProductsRange
+	fetchPageProducts
 } = productsSlice.actions;
 
 export default productsSlice.reducer;
