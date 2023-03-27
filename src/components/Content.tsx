@@ -10,6 +10,7 @@ import { SelectedFilters } from "./UI/SelectedFilters";
 import { Pagination } from "./Pagination";
 import { fetchProducts, fetchPageProducts, sortProducts } from "../store/slices/productSlice";
 import { useEffect, useState } from "react";
+import { useWindowSize } from "../hooks/useWindowSize";
 
 export function Content(props: {breadcrumbs?: string}) {
 	const productsState = useTypedSelector(state => state.products);
@@ -23,6 +24,9 @@ export function Content(props: {breadcrumbs?: string}) {
 
 	const [firstRenderDone, setFirstRenderDone] = useState(false);
 	const [firstRenderDoneFiltered, setFirstRenderDoneFiltered] = useState(false);
+	
+	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
+    const [width, height] = useWindowSize();
 
 	useEffect(() => {
 		if (firstRenderDone) {
@@ -108,21 +112,27 @@ export function Content(props: {breadcrumbs?: string}) {
 				<div className="container">
 					<div className="catalog-content__menu">
 						<div className="catalog-content__top">
-							<div className="catalog-content__title">Косметика и гигиена <span>{}</span></div>
-							<Sort />
+							{width <= 768 && productsState.status === 'loading' ? 
+								null : <div className="catalog-content__title">Косметика и гигиена <span>{}</span></div>
+							}
+							{width <= 768 ? null : <Sort />}
 						</div>
-						<FiltersTop top={true} className='catalog-content__filters-top' clickHandler={handleCareTypeFilterClick} 
-							list={filterFields} />
+						{width <= 768 && productsState.status === 'loading' ? 
+							null : <FiltersTop top={true} className='catalog-content__filters-top' 
+							clickHandler={handleCareTypeFilterClick} list={filterFields} />
+						}
+						{width <= 768 && !isDropDownOpen && productsState.status !== 'loading' ? <Sort /> : null}
 						<SelectedFilters />
-						<SidebarFilters allManufacturers={allManufacturers} clickHandler={handleCareTypeFilterClick} />
+						<SidebarFilters	allManufacturers={allManufacturers} clickHandler={handleCareTypeFilterClick} />
 						<Products />
 						<Pagination />
-						<div className="catalog-content__bottom-info bottom-info">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, 
-							vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. 
-							Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. 
-							Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.
-						</div>
+						{!isDropDownOpen ? <div className="catalog-content__bottom-info bottom-info">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, 
+								vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. 
+								Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. 
+								Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.
+							</div> : null
+						}
 					</div>
 				</div>
 			</div>

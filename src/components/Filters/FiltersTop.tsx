@@ -14,7 +14,7 @@ export function FiltersTop(props: Props) {
     const filters = useTypedSelector(state => state.filters);
 
     return (
-        <div className={`${className} 'filters-top'}`}>
+        <div className={`${className} filters-top`}>
             <ul className={`filters-top__list ${props.top ? 'top-only' : ''}`}>
                 {list.map(item => {
                     return (

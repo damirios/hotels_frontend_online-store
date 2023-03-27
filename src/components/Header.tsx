@@ -4,10 +4,16 @@ import { Logo } from './UI/Logo';
 import { Pricelist } from "./UI/Pricelist";
 import { ContactsPhone } from "./UI/ContactsPhone";
 import { MailLink } from "./UI/MailLink";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useTypedDispatch } from "../hooks/useTypedDispatch";
+import { closeDropDown } from "../store/slices/dropDownSlice";
 
 export function Header() {
 	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Возврат", "Контакты"];
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
+	const dispatch = useTypedDispatch();
 
 	useEffect(() => {
 		if (isMobile) {
@@ -28,6 +34,8 @@ export function Header() {
 	function handleBurgerClick(e: React.MouseEvent) {
 		const burgerContent = document.querySelector('.top-header__row');
 		const app = document.querySelector('.App');
+
+		if (isDropDownOpen) { dispatch(closeDropDown()) };
 
 		if (burgerContent && app) {
 			if (burgerContent.classList.contains('_active')) {

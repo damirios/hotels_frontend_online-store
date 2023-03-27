@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { FiltersTop } from "./FiltersTop";
 import { filterFields } from "../../data/filterFields";
 import { useTypedDispatch } from "../../hooks/useTypedDispatch";
@@ -6,6 +6,8 @@ import { resetFilters, setFilters } from "../../store/slices/filtersSlice";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { setPageTo } from "../../store/slices/paginationSlice";
 import { useNavigate } from "react-router-dom";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { closeDropDown, openDropDown } from "../../store/slices/dropDownSlice";
 
 export function SidebarFilters(props: {allManufacturers: string[], clickHandler: any}) {
     const filters = useTypedSelector(state => state.filters);
@@ -18,6 +20,18 @@ export function SidebarFilters(props: {allManufacturers: string[], clickHandler:
     const [maxShownItems, setMaxShownItems] = useState(4);
     const [selectedManufacturers, setSelectedManufacturers] = useState<string[]>(filters.manufacturersList);
 
+    const areProductsLoading = useTypedSelector(state => state.products.status) === 'loading';
+    const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
+    const [formTop, setFormTop] = useState<number | null>(null);
+    
+    const [width, height] = useWindowSize();
+
+    useLayoutEffect(() => {
+        if (width > 768) {
+            dispatch(closeDropDown());
+        }
+    }, [width]);
+    
     const dispatch = useTypedDispatch();
     const navigate = useNavigate();
 
@@ -62,6 +76,7 @@ export function SidebarFilters(props: {allManufacturers: string[], clickHandler:
         dispatch(setFilters({list: selectedManufacturers, price_min: minValue, price_max: maxValue}));
         dispatch(setPageTo(1));
         navigate("/");
+        dispatch(closeDropDown());
     }
 
     function handleFiltersReset(e: React.FormEvent<HTMLFormElement>) {
@@ -72,12 +87,29 @@ export function SidebarFilters(props: {allManufacturers: string[], clickHandler:
         setSelectedManufacturers([]);
         setMinValue('');
         setMaxValue('');
+        dispatch(closeDropDown());
+    }
+
+    function handleDropDown(e: React.MouseEvent<HTMLHeadElement>) {
+        if (width <= 768) {
+            setFormTop((e.target as HTMLHeadElement).getBoundingClientRect().bottom + 15);
+            isDropDownOpen ? dispatch(closeDropDown()) : dispatch(openDropDown());
+        }
     }
 
     return (
         <div className="catalog-content__sidebar sidebar">
-            <h1 className="sidebar__title">Подбор по параметрам</h1>
-            <form className="sidebar__form" onSubmit={handleFilterSubmit} onReset={handleFiltersReset}>
+            {areProductsLoading ? null : 
+                <h1 onClick={handleDropDown} className={`sidebar__title ${isDropDownOpen ? 'open' : ''}`}>
+                    <span>Подбор по параметрам</span>
+                    {width <= 768 ? <div className={`image-box ${isDropDownOpen ? 'reverse' : ''}`}>
+                            <img src="/images/icons/arrow_down.svg" alt="arrow_down" />
+                        </div> : null
+                    }
+                </h1>
+            }
+            <form className={`sidebar__form ${isDropDownOpen ? 'open' : ''}`} onSubmit={handleFilterSubmit} 
+            onReset={handleFiltersReset} style={{top: formTop + 'px'}}>
                 <div className="sidebar__price">
                     <label htmlFor="price-min">Цена <span>руб.</span></label>
                     <div className="sidebar__price_inputs-box">
