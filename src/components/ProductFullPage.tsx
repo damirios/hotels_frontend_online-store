@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useWindowSize } from "../hooks/useWindowSize";
 import { addProductToCart } from "../store/slices/cartSlice";
 import { sizeTypes } from "../types/productDBType";
+import { ToCartButton } from "./UI/ToCartButton";
 
 export function ProductFullPage() {
     const params = useParams();
@@ -11,6 +13,7 @@ export function ProductFullPage() {
     const dispatch = useDispatch();
 
     const product = useTypedSelector(state => state.products.list).find(product => product.barcode === params.id);
+    const [width, height] = useWindowSize();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -82,16 +85,14 @@ export function ProductFullPage() {
                                         <div className="quantity__count">{count}</div>
                                         <button type="button" onClick={handleIncrease} className="quantity__increase">+</button>
                                     </div>
-                                    <button type='button' onClick={handleAddToCartClick} className="full-product__cart-button">
-                                        <span>В корзину </span>
-                                        <img src="/images/icons/cart_white.svg" alt="cart" />
-                                    </button>
-                                    {addToCartMessage ? <div className="quantity__message">
+                                    {width > 600 ? <ToCartButton clickHandler={handleAddToCartClick} /> : null}
+                                    {addToCartMessage ? <div className="full-product__message">
                                             Товар добавлен в корзину! Количество: {count}
                                         </div> : null
                                     }
                                 </div>
                                 <div className="full-product__add-info add-info">
+                                    {width <= 600 ? <ToCartButton clickHandler={handleAddToCartClick} /> : null}
                                     <button type="button" className="add-info__share">
                                         <img src="/images/icons/share.svg" alt="share" />
                                     </button>
