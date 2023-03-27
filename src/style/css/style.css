@@ -648,6 +648,7 @@ a:hover {
   border: 3px solid #fff;
 }
 .cart__products-number span {
+  font-size: 11px;
   font-weight: 700;
   line-height: 121.4285714286%;
   color: #fff;
@@ -2337,6 +2338,7 @@ a:hover {
   justify-content: start;
   column-gap: 40px;
   margin-bottom: 20px;
+  position: relative;
 }
 .full-product__price {
   font-size: 30px;
@@ -2461,6 +2463,14 @@ a:hover {
   line-height: 130%;
   color: #3F4E65;
 }
+.quantity__message {
+  font-size: 10;
+  color: orange;
+  position: absolute;
+  top: -40px;
+  right: 0;
+}
+
 .add-info {
   display: flex;
   align-items: start;

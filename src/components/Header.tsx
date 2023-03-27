@@ -12,6 +12,7 @@ export function Header() {
 	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Возврат", "Контакты"];
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+	const cart = useTypedSelector(state => state.cart);
 	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
 	const dispatch = useTypedDispatch();
 
@@ -103,7 +104,7 @@ export function Header() {
 							<div className="cart__image-box">
 								<img src="/images/icons/cart.svg" alt="cart" className="cart__image" />
 								<div className="cart__products-number">
-									<span>3</span>
+									<span>{cart.productsInCart.reduce((prev, current) => prev + current.quantity, 0)}</span>
 								</div>
 							</div>
 							<div className="cart__info">

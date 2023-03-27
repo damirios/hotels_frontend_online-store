@@ -4,6 +4,7 @@ import filtersReducer from "./slices/filtersSlice";
 import paginationReducer from "./slices/paginationSlice";
 import sortReducer from "./slices/sortSlice";
 import dropDownReducer from "./slices/dropDownSlice";
+import cartReducer from "./slices/cartSlice";
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
         filters: filtersReducer,
         pagination: paginationReducer,
         sort: sortReducer,
-        dropDown: dropDownReducer
+        dropDown: dropDownReducer,
+        cart: cartReducer
     }
 });
 

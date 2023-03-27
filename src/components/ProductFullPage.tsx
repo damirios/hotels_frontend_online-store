@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { addProductToCart } from "../store/slices/cartSlice";
 import { sizeTypes } from "../types/productDBType";
 
 export function ProductFullPage() {
     const params = useParams();
     const { pathname } = useLocation();
+    const dispatch = useDispatch();
 
     const product = useTypedSelector(state => state.products.list).find(product => product.barcode === params.id);
 
@@ -16,6 +19,7 @@ export function ProductFullPage() {
     const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
     const [isCharacteristicsOpen, setIsCharacteristicsOpen] = useState(false);
     const [count, setCount] = useState(1);
+    const [addToCartMessage, setAddToCartMessage] = useState(false);
 
     function handleDescriptionClick() {
         setIsDescriptionOpen(!isDescriptionOpen);
@@ -32,6 +36,21 @@ export function ProductFullPage() {
     function handleDecrease() {
         if (count > 1) {
             setCount(count - 1);
+        }
+    }
+
+    function handleAddToCartClick() {
+        if (addToCartMessage !== true) {
+            dispatch(addProductToCart({
+                barcode: product?.barcode,
+                quantity: count
+            }));
+            setAddToCartMessage(true); // показываем сообщение о добавлении
+            setTimeout(() => {
+                setAddToCartMessage(false);
+                setCount(1);
+    
+            }, 1500); // убираем через 2 секунды
         }
     }
 
@@ -63,10 +82,14 @@ export function ProductFullPage() {
                                         <div className="quantity__count">{count}</div>
                                         <button type="button" onClick={handleIncrease} className="quantity__increase">+</button>
                                     </div>
-                                    <button type='button' className="full-product__cart-button">
+                                    <button type='button' onClick={handleAddToCartClick} className="full-product__cart-button">
                                         <span>В корзину </span>
                                         <img src="/images/icons/cart_white.svg" alt="cart" />
                                     </button>
+                                    {addToCartMessage ? <div className="quantity__message">
+                                            Товар добавлен в корзину! Количество: {count}
+                                        </div> : null
+                                    }
                                 </div>
                                 <div className="full-product__add-info add-info">
                                     <button type="button" className="add-info__share">
