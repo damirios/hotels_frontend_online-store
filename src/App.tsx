@@ -4,6 +4,9 @@ import { Content } from './components/Content';
 import { Footer } from './components/UI/Footer';
 import { Header } from './components/Header';
 import { useTypedSelector } from './hooks/useTypedSelector';
+import { ProductFullPage } from './components/ProductFullPage';
+
+import './style/css/style.css';
 
 function App() {
 	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
@@ -14,7 +17,7 @@ function App() {
 				<Header />
 				<Routes>
 					<Route path='/' element={<Content />} />
-					{/* <Route path='/products/:productID' element={<ProductFullPage />} /> */}
+					<Route path='/products/:id' element={<ProductFullPage />} />
 				</Routes>
 				<Footer />
 			</Router>
