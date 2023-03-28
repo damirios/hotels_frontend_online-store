@@ -3,11 +3,17 @@ import { Logo } from './Logo';
 import { Pricelist } from './Pricelist';
 import { ContactsPhone } from './ContactsPhone';
 import { MailLink } from './MailLink';
+import { useLocation } from 'react-router-dom';
 
 export function Footer() {
 
 	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Возврат", "Контакты"];
 	const categoryLinks: string[] = ["Бытовая химия", "Косметика и гигиена", "Товары для дома", "Товары для детей и мам", "Посуда"];
+
+	const { pathname } = useLocation();
+	if (pathname === '/admin-page') {
+		return null;
+	}
 
 	return (
 		<footer className="footer">

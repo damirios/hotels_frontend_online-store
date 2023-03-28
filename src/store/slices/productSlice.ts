@@ -3,9 +3,10 @@ import { productsDB } from "../../data/productsDB";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isSubarray } from '../../utilityFunctions/isSubarray';
 import { paginationInitialState } from "./paginationSlice";
+import { getProductsFromLocalStorage } from "../../utilityFunctions/localStorageFunctions";
 
 const initialState: ProductsState = {
-	list: [...productsDB],
+	list: getProductsFromLocalStorage(),
 	pageList: [...productsDB].slice(0, paginationInitialState.visibleProductsNumber),
 	loading: false,
 	error: null,

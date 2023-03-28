@@ -7,7 +7,7 @@ import { MailLink } from "./UI/MailLink";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { closeDropDown } from "../store/slices/dropDownSlice";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export function Header() {
 	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Возврат", "Контакты"];
@@ -46,6 +46,11 @@ export function Header() {
 				burgerContent.classList.add('_active');
 			}
 		}
+	}
+
+	const { pathname } = useLocation();
+	if (pathname === '/admin-page') {
+		return null;
 	}
 	
 	return (
