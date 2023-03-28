@@ -7,6 +7,7 @@ import { useTypedSelector } from './hooks/useTypedSelector';
 import { ProductFullPage } from './components/ProductFullPage';
 
 import './style/css/style.css';
+import { Cart } from './components/Cart';
 
 function App() {
 	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
@@ -17,6 +18,7 @@ function App() {
 				<Header />
 				<Routes>
 					<Route path='/' element={<Content />} />
+					<Route path='/cart' element={<Cart />} />
 					<Route path='/products/:id' element={<ProductFullPage />} />
 				</Routes>
 				<Footer />

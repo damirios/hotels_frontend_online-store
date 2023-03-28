@@ -45,7 +45,7 @@ export function ProductFullPage() {
     function handleAddToCartClick() {
         if (addToCartMessage !== true) {
             dispatch(addProductToCart({
-                barcode: product?.barcode,
+                product: product,
                 quantity: count
             }));
             setAddToCartMessage(true); // показываем сообщение о добавлении

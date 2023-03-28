@@ -123,7 +123,7 @@ export function Content(props: {breadcrumbs?: string}) {
 						}
 						{width <= 768 && !isDropDownOpen && productsState.status !== 'loading' ? <Sort /> : null}
 						<SelectedFilters />
-						<SidebarFilters	allManufacturers={allManufacturers} clickHandler={handleCareTypeFilterClick} />
+						<SidebarFilters clickHandler={handleCareTypeFilterClick} />
 						<Products />
 						<Pagination />
 						{!isDropDownOpen ? <div className="catalog-content__bottom-info bottom-info">

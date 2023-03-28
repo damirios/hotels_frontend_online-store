@@ -10,19 +10,28 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addProductToCart(state, action) {
-            const { barcode, quantity } = action.payload;
-            const index = state.productsInCart.findIndex(el => el.barcode === barcode);
+            const { product, quantity } = action.payload;
+            const index = state.productsInCart.findIndex(el => el.product.barcode === product.barcode);
             if ( index !== -1 ) {
                 state.productsInCart[index].quantity += +quantity; 
             } else {
-                state.productsInCart.push({ barcode, quantity: +quantity });
+                state.productsInCart.push({ product, quantity: +quantity });
             }
         },
-        removeProductFromCart(state) {
-
+        removeProductFromCart(state, action) {
+            const barcode = action.payload;
+            const index = state.productsInCart.findIndex(el => el.product.barcode === barcode);
+            state.productsInCart.splice(index, 1);
         },
         removeAllProductsFromCart(state) {
-
+            state.productsInCart = [];
+        },
+        changeQuantityInCart(state, action) {
+            const { barcode, count } = action.payload;
+            const index = state.productsInCart.findIndex(el => el.product.barcode === barcode);
+            if (index !== -1) {
+                state.productsInCart[index].quantity = count;
+            }
         }
     }
 });
@@ -30,7 +39,8 @@ const cartSlice = createSlice({
 export const {
     addProductToCart,
     removeProductFromCart,
-    removeAllProductsFromCart
+    removeAllProductsFromCart,
+    changeQuantityInCart
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

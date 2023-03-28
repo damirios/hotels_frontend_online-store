@@ -1,3 +1,5 @@
+import { ProductType } from "./productDBType";
+
 export interface CartState {
-    productsInCart: {barcode: string, quantity: number}[];
+    productsInCart: {product: ProductType, quantity: number}[];
 }

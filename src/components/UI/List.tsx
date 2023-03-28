@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function List(props: {class?: string, list: string[], singleClass?: string, title: string}) {
     return (
         <div className={`${props.class} ${props.singleClass ? props.singleClass : ''}`}>
@@ -6,7 +8,7 @@ export function List(props: {class?: string, list: string[], singleClass?: strin
                 {props.list.map((item, index) => {
                     return (
                         <li key={index} className={`${props.class}__item`}>
-                            <a href="/" className={`${props.class}__link`}>{item}</a>
+                            <Link to='/' className={`${props.class}__link`}>{item}</Link>
                         </li>
                     );
                 })}

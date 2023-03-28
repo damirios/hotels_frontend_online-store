@@ -7,6 +7,7 @@ import { MailLink } from "./UI/MailLink";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { closeDropDown } from "../store/slices/dropDownSlice";
+import { Link } from "react-router-dom";
 
 export function Header() {
 	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Возврат", "Контакты"];
@@ -73,13 +74,13 @@ export function Header() {
 							</button>
 						</div>
 						<Logo class="bottom-header__logo" />
-						<button type="button" className="bottom-header__catalog catalog">
+						<Link to='/' className="bottom-header__catalog catalog">
 							<span>Каталог</span>
 							{isMobile ? 
 								<img src="/images/icons/squares_mobile.svg" alt="squares" /> :
 								<img src="/images/icons/squares.svg" alt="squares" />
 							}
-						</button>
+						</Link>
 						<form className="bottom-header__search-form search-form-header">
 							<input type="text" placeholder="Поиск..." />
 							<button type="submit">
@@ -100,7 +101,7 @@ export function Header() {
 							</div>
 						</div>
 						<Pricelist class='bottom-header__pricelist pricelist' />
-						<button type="button" className="bottom-header__cart cart">
+						<Link to='/cart' className="bottom-header__cart cart">
 							<div className="cart__image-box">
 								<img src="/images/icons/cart.svg" alt="cart" className="cart__image" />
 								<div className="cart__products-number">
@@ -109,9 +110,12 @@ export function Header() {
 							</div>
 							<div className="cart__info">
 								<p>Корзина</p>
-								<p className="cart__sum">12 478 Т</p>
+								<p className="cart__sum">
+									{cart.productsInCart.reduce((prev, current) => prev + current.product.price * current.quantity, 0)}
+									<span> руб.</span>
+								</p>
 							</div>
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -8,14 +8,17 @@ import { setPageTo } from "../../store/slices/paginationSlice";
 import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { closeDropDown, openDropDown } from "../../store/slices/dropDownSlice";
+import { productsDB } from "../../data/productsDB";
 
-export function SidebarFilters(props: {allManufacturers: string[], clickHandler: any}) {
+
+export function SidebarFilters(props: {clickHandler: any}) {
     const filters = useTypedSelector(state => state.filters);
+    const allManufacturersFromDB = Array.from(new Set(productsDB.map(product => product.manufacturer)));
 
     const [minValue, setMinValue] = useState<string>(filters.price_min);
     const [maxValue, setMaxValue] = useState<string>(filters.price_max);
     const [manufacturerInput, setManufacturerInput] = useState('');
-    const [allManufacturers, setAllManufacturers] = useState(props.allManufacturers);
+    const [allManufacturers, setAllManufacturers] = useState(allManufacturersFromDB);
     const [allShown, setAllShown] = useState(false);
     const [maxShownItems, setMaxShownItems] = useState(4);
     const [selectedManufacturers, setSelectedManufacturers] = useState<string[]>(filters.manufacturersList);
@@ -52,7 +55,7 @@ export function SidebarFilters(props: {allManufacturers: string[], clickHandler:
     function handleManufacturerChange(e: { target: HTMLInputElement }) {
         const value = e.target.value;
         setManufacturerInput(value);
-        setAllManufacturers(props.allManufacturers.filter(item => item.toLowerCase().includes(value.toLowerCase())))
+        setAllManufacturers(allManufacturersFromDB.filter(item => item.toLowerCase().includes(value.toLowerCase())))
     }
 
     function handleShowHideClick(e: React.MouseEvent<HTMLParagraphElement>) {
@@ -126,10 +129,9 @@ export function SidebarFilters(props: {allManufacturers: string[], clickHandler:
                     <input type="text" value={manufacturerInput} placeholder="Поиск..." onChange={handleManufacturerChange} 
                         name="manufacturer" id="manufacturer" />
                     <ul>
-
                         {allManufacturers.map((item, index) => {
                             return (
-                                <li key={item} className={(index >= maxShownItems && !allShown) ? 'hide' : ''}>
+                                <li key={index} className={(index >= maxShownItems && !allShown) ? 'hide' : ''}>
                                     <input type="checkbox" id={`manufacturer_${item}`} onChange={handleCheckboxChange}
                                         name="manufacturers" value={item} checked={selectedManufacturers.includes(item)} />
                                     <label htmlFor={`manufacturer_${item}`}>{item}</label>

@@ -1,5 +1,6 @@
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { filterFields } from "../../data/filterFields";
+import { productsDB } from "../../data/productsDB";
 
 export function SelectedFilters() {
     const filters = useTypedSelector(state => state.filters);
