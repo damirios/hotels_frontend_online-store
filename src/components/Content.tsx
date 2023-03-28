@@ -11,6 +11,7 @@ import { Pagination } from "./Pagination";
 import { fetchProducts, fetchPageProducts, sortProducts } from "../store/slices/productSlice";
 import { useEffect, useState } from "react";
 import { useWindowSize } from "../hooks/useWindowSize";
+import { Breadcrumbs } from "./UI/Breadcrumbs";
 
 export function Content(props: {breadcrumbs?: string}) {
 	const productsState = useTypedSelector(state => state.products);
@@ -87,27 +88,9 @@ export function Content(props: {breadcrumbs?: string}) {
 		}
 	}
 
-
 	return(
 		<main className="content">
-			<div className="content__breadcrumbs breadcrumbs">
-				<div className="container">
-					<ul className="breadcrumbs__list">
-						<li className="breadcrumbs__item">
-							<a href="/">Главная</a>
-						</li>
-						<li className="breadcrumbs__item">
-							<a href="/">Главная</a>
-						</li>
-						<li className="breadcrumbs__item">
-							<a href="/">Главная</a>
-						</li>
-						<li className="breadcrumbs__item">
-							<a href="/">Главная</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+			<Breadcrumbs page='catalog' />
 			<div className="content__catalog catalog-content">
 				<div className="container">
 					<div className="catalog-content__menu">
