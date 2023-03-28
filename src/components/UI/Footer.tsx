@@ -11,7 +11,7 @@ export function Footer() {
 	const categoryLinks: string[] = ["Бытовая химия", "Косметика и гигиена", "Товары для дома", "Товары для детей и мам", "Посуда"];
 
 	const { pathname } = useLocation();
-	if (pathname === '/admin-page') {
+	if (pathname.includes('/admin-page')) {
 		return null;
 	}
 

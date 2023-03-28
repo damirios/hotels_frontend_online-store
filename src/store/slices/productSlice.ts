@@ -36,6 +36,10 @@ const productsSlice = createSlice({
 			const firstProductIndex = (page - 1) * productsNumber;
 			const lastProductIndex = productsNumber * page > state.list.length ? state.list.length : productsNumber * page;
 			state.pageList = state.list.slice(firstProductIndex, lastProductIndex);
+		},
+		removeProduct(state, action) {
+			const index = state.list.findIndex(el => el.barcode === action.payload);
+			state.list.splice(index, 1);
 		}
 	},
 	extraReducers: (builder) => {
@@ -125,7 +129,8 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async (p
 
 export const {
 	sortProducts,
-	fetchPageProducts
+	fetchPageProducts,
+	removeProduct
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

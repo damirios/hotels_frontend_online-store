@@ -49,7 +49,7 @@ export function Header() {
 	}
 
 	const { pathname } = useLocation();
-	if (pathname === '/admin-page') {
+	if (pathname.includes('/admin-page')) {
 		return null;
 	}
 	

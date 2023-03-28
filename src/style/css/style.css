@@ -3134,3 +3134,123 @@ a:hover {
     font-size: 14px;
   }
 }
+
+.admin-page {
+  display: flex;
+  flex-direction: column;
+}
+.admin-page__header {
+  flex: 0 0 70px;
+  background-color: rgb(233, 233, 233);
+}
+.admin-page__content {
+  flex: 1 1 auto;
+}
+.admin-page__footer {
+  flex: 0 0 70px;
+  background-color: rgb(233, 233, 233);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-admin ul {
+  padding: 20px 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+.header-admin ul li a {
+  text-decoration: none;
+  color: #3F4E65;
+  transition: all 0.4s ease 0s;
+}
+.header-admin ul li a:hover {
+  color: orange;
+  text-decoration: underline;
+}
+
+.content-admin {
+  padding: 30px 0;
+}
+.content-admin__title {
+  margin-bottom: 50px;
+}
+.content-admin__list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.item-admin {
+  flex: 1 1 350px;
+  display: grid;
+  grid-template-columns: minmax(80px, 140px) 1fr;
+  grid-template-rows: 2fr 1fr;
+  gap: 15px;
+  border: 2px solid rgb(206, 206, 206);
+  border-radius: 10px;
+  padding: 25px 0 10px;
+  position: relative;
+}
+.item-admin__image-box {
+  grid-area: 1/1/-1/2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-admin__image-box img {
+  max-width: 80%;
+  max-height: 80%;
+}
+.item-admin__info {
+  grid-area: 1/2/2/3;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.item-admin__controls {
+  grid-area: 2/2/3/3;
+}
+
+.info-admin__title {
+  font-weight: 700;
+  font-size: 16px;
+}
+.info-admin__description {
+  font-weight: 500;
+  font-size: 16px;
+}
+.info-admin__barcode {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: 700;
+}
+.info-admin__price {
+  font-size: 16px;
+}
+
+.controls-admin__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.controls-admin__list li button {
+  background-color: #FFC85E;
+  padding: 5px 12px;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+.controls-admin__list li a {
+  color: #3F4E65;
+  transition: all 0.4s ease 0s;
+  text-decoration: none;
+}
+.controls-admin__list li a:hover {
+  color: orange;
+  text-decoration: underline;
+}

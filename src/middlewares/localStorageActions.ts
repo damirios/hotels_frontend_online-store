@@ -1,6 +1,6 @@
 import { Middleware } from "@reduxjs/toolkit";
-import { productsDB } from "../data/productsDB";
-import { getProductsFromLocalStorage, setProductsToLocalStorage } from "../utilityFunctions/localStorageFunctions";
+import { removeProduct } from "../store/slices/productSlice";
+import { removeProductFromLocalStorage, setProductsToLocalStorage } from "../utilityFunctions/localStorageFunctions";
 
 
 export const localStorageActions: Middleware = (store: any) => (next: any) => (action) => {
@@ -8,5 +8,10 @@ export const localStorageActions: Middleware = (store: any) => (next: any) => (a
     // if (products === null || products.length === 0) {
     //     setProductsToLocalStorage(productsDB);
     // }
+    if (action.type === 'removeProductFromLocalStorage') {
+        removeProductFromLocalStorage(action.payload);
+        store.dispatch(removeProduct(action.payload));
+    }
+    
     return next(action);
 }
