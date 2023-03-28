@@ -24,7 +24,7 @@ const cartSlice = createSlice({
             state.productsInCart.splice(index, 1);
         },
         removeAllProductsFromCart(state) {
-            state.productsInCart = [];
+            state.productsInCart.splice(0, state.productsInCart.length);
         },
         changeQuantityInCart(state, action) {
             const { barcode, count } = action.payload;

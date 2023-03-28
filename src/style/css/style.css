@@ -2728,6 +2728,7 @@ a:hover {
   color: #fff;
   border-radius: 79px;
   background-color: #FFC85E;
+  cursor: pointer;
 }
 .cart-page__total-price {
   font-size: 30px;

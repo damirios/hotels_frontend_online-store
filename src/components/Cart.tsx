@@ -14,13 +14,12 @@ export function Cart() {
 
     function handleCloseThanks() {
         setShowThanks(false);
+        dispatch(removeAllProductsFromCart());
+        window.scrollTo(0, 0);
     }
 
     function handleCheckoutClick() {
-        if (cart.productsInCart.length !== 0) {
-            dispatch(removeAllProductsFromCart);
-            setShowThanks(true);
-        }
+        setShowThanks(true);
     }
 
     return (
