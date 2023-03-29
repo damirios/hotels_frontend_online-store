@@ -5,7 +5,7 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { Products } from "./Products";
 import { SidebarFilters } from "./Filters/SidebarFilters";
-import { resetFilters, setCareTypesFilter } from "../store/slices/filtersSlice";
+import { setCareTypesFilter } from "../store/slices/filtersSlice";
 import { SelectedFilters } from "./UI/SelectedFilters";
 import { Pagination } from "./Pagination";
 import { fetchFilteredProducts, fetchPageProducts, sortProducts } from "../store/slices/productSlice";
