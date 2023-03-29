@@ -3154,6 +3154,11 @@ a:hover {
   justify-content: center;
 }
 
+@media (max-width: 768px) {
+  .header-admin {
+    padding: 10px 15px;
+  }
+}
 .header-admin ul {
   padding: 25px 0;
   height: 100%;
@@ -3161,13 +3166,33 @@ a:hover {
   align-items: center;
   column-gap: 20px;
 }
+@media (max-width: 480px) {
+  .header-admin ul {
+    padding: 0;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 10px;
+  }
+}
 .header-admin ul li.to-right {
   margin-left: auto;
+  text-align: right;
+}
+@media (max-width: 480px) {
+  .header-admin ul li.to-right {
+    text-align: left;
+    margin: 0;
+  }
 }
 .header-admin ul li a {
   text-decoration: none;
   color: #3F4E65;
   transition: all 0.4s ease 0s;
+}
+@media (max-width: 768px) {
+  .header-admin ul li a {
+    font-size: 14px;
+  }
 }
 .header-admin ul li a:hover {
   color: orange;
@@ -3176,6 +3201,11 @@ a:hover {
 
 .content-admin {
   padding: 30px 0;
+}
+@media (max-width: 768px) {
+  .content-admin {
+    padding: 30px 15px;
+  }
 }
 .content-admin__title {
   margin-bottom: 50px;
@@ -3266,9 +3296,15 @@ a:hover {
 .change-admin {
   padding: 30px 0;
 }
+@media (max-width: 768px) {
+  .change-admin {
+    padding: 30px 15px;
+  }
+}
 .change-admin__title {
   font-size: 20px;
   margin-bottom: 20px;
+  line-height: 150%;
 }
 .change-admin__title span {
   font-weight: 700;
@@ -3279,6 +3315,13 @@ a:hover {
   grid-template-rows: auto;
   row-gap: 10px;
   column-gap: 20px;
+}
+@media (max-width: 768px) {
+  .product-admin__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
 }
 .product-admin__group label {
   display: block;
@@ -3303,6 +3346,11 @@ a:hover {
   font-weight: 300;
   border-radius: 5px;
 }
+@media (max-width: 768px) {
+  .product-admin__group textarea {
+    min-width: 250px;
+  }
+}
 .product-admin__group_sizeType {
   display: flex;
   flex-direction: column;
@@ -3315,6 +3363,13 @@ a:hover {
   display: flex;
   align-items: center;
   column-gap: 30px;
+}
+@media (max-width: 768px) {
+  .product-admin__group_controls {
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: start;
+  }
 }
 .product-admin__group_controls button {
   padding: 15px 25px;

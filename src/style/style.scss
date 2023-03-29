@@ -3574,6 +3574,10 @@ a {
 
 .header-admin {
 
+	@media (max-width: 768px) {
+		padding: 10px 15px;
+	}
+
 	& ul {
 		padding: 25px 0;
 		height: 100%;
@@ -3581,14 +3585,31 @@ a {
 		align-items: center;
 		column-gap: 20px;
 
+		@media (max-width: 480px) {
+			padding: 0;
+			flex-direction: column;
+			align-items: start;	
+			row-gap: 10px;
+		}
+
 		& li.to-right {
 			margin-left: auto;
+			text-align: right;
+
+			@media (max-width: 480px) {
+				text-align: left;
+				margin: 0;
+			}
 		}
 
 		& li a {
 			text-decoration: none;
 			color: $color2;
 			transition: all 0.4s ease 0s;
+
+			@media (max-width: 768px) {
+				font-size: 14px;
+			}
 
 			&:hover {
 				color: orange;
@@ -3600,6 +3621,10 @@ a {
 
 .content-admin {
 	padding: 30px 0;
+
+	@media (max-width: 768px) {
+		padding: 30px 15px;
+	}
 
 	// .content-admin__title
 
@@ -3733,10 +3758,15 @@ a {
 .change-admin {
 	padding: 30px 0;
 
+	@media (max-width: 768px) {
+		padding: 30px 15px;
+	}
+
 	// .change-admin__title
 	&__title {
 		font-size: 20px;
 		margin-bottom: 20px;
+		line-height: 150%;
 
 		& span {
 			font-weight: 700;
@@ -3758,6 +3788,12 @@ a {
 		grid-template-rows: auto;
 		row-gap: 10px;
 		column-gap: 20px;
+
+		@media (max-width: 768px) {
+			display: flex;
+			flex-direction: column;
+			row-gap: 30px;
+		}
 	}
 
 	// .product-admin__group
@@ -3788,6 +3824,10 @@ a {
 			font-size: 14px;
 			font-weight: 300;
 			border-radius: 5px;
+
+			@media (max-width: 768px) {
+				min-width: 250px;
+			}
 		}
 
 		// .product-admin__group_title
@@ -3844,6 +3884,12 @@ a {
 			display: flex;
 			align-items: center;
 			column-gap: 30px;
+
+			@media (max-width: 768px) {
+				flex-direction: column;
+				row-gap: 20px;
+				align-items: start;
+			}
 
 			& button {
 				padding: 15px 25px;
