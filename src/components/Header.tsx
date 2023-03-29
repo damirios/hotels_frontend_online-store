@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { List } from './UI/List';
 import { Logo } from './UI/Logo';
 import { Pricelist } from "./UI/Pricelist";
-import { ContactsPhone } from "./UI/ContactsPhone";
 import { MailLink } from "./UI/MailLink";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";

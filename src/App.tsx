@@ -12,7 +12,6 @@ import { AdminPageChangeInfo } from './components/AdminPage/AdminPageChangeInfo'
 import { AdminPageCreate } from './components/AdminPage/AdminPageCreate';
 
 function App() {
-	
 	return (
 		<div className="App">
 			<Router>
