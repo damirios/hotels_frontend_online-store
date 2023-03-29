@@ -1,5 +1,5 @@
 import { productsDB } from "../data/productsDB";
-import { ProductType } from "../types/productDBType";
+import { ProductType, sizeTypes } from "../types/productDBType";
 
 
 export function getProductsFromLocalStorage() {
@@ -25,4 +25,65 @@ export function removeProductFromLocalStorage(barcode: string) {
         productInLocalStorage.splice(index, 1);
         localStorage.setItem('hotels_products', JSON.stringify(productInLocalStorage));
     }
+}
+
+export function getSingleProductFromLocalStorage(barcode: string) {
+    const stringifyProducts = localStorage.getItem('hotels_products');
+    if (stringifyProducts !== null) {
+        const productsInLocalStorage: ProductType[] = JSON.parse(stringifyProducts);
+        const index = productsInLocalStorage.findIndex(el => el.barcode === barcode);
+        return {
+            index,
+            product: productsInLocalStorage[index]
+        }
+    }
+    return null;
+}
+
+interface DataType {
+    title: string,
+    sizeType: sizeTypes.volume | sizeTypes.weight,
+    size: number,
+    imageURL: string,
+    manufacturer: string,
+    brand: string,
+    description: string,
+    price: number,
+    careTypes: string[]
+}
+
+export function changeProductInLocalStorage(barcode: string, data: DataType) {
+    const stringifyProducts = localStorage.getItem('hotels_products');
+    if (stringifyProducts !== null) {
+        const productsInLocalStorage: ProductType[] = JSON.parse(stringifyProducts);
+        const index = productsInLocalStorage.findIndex(el => el.barcode === barcode);
+        productsInLocalStorage[index] = {
+            title: data.title, size: data.size, sizeType: data.sizeType, manufacturer: data.manufacturer,
+            description: data.description, image_url: data.imageURL, barcode, brand: data.brand, 
+            price: data.price, careTypes: data.careTypes
+        }
+
+        setProductsToLocalStorage(productsInLocalStorage);
+
+        return productsInLocalStorage[index];
+    }
+    return null;
+}
+
+export function createProductInLocalStorage(barcode: string, data: DataType) {
+    const stringifyProducts = localStorage.getItem('hotels_products');
+    if (stringifyProducts !== null) {
+        const productsInLocalStorage: ProductType[] = JSON.parse(stringifyProducts);
+        const newProduct = {
+            title: data.title, size: data.size, sizeType: data.sizeType, manufacturer: data.manufacturer,
+            description: data.description, image_url: data.imageURL, barcode, brand: data.brand, 
+            price: data.price, careTypes: data.careTypes
+        };
+
+        productsInLocalStorage.push(newProduct);
+        setProductsToLocalStorage(productsInLocalStorage);
+
+        return newProduct;
+    }
+    return null;
 }

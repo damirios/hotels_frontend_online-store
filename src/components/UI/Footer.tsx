@@ -3,7 +3,7 @@ import { Logo } from './Logo';
 import { Pricelist } from './Pricelist';
 import { ContactsPhone } from './ContactsPhone';
 import { MailLink } from './MailLink';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export function Footer() {
 

@@ -232,8 +232,7 @@ a:hover {
     display: none;
   }
 }
-.menu-header__link {
-  font-family: "Inter";
+.menu-header__link, .menu-header__link a {
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
@@ -241,7 +240,7 @@ a:hover {
   text-decoration: none;
 }
 @media (max-width: 840px) {
-  .menu-header__link {
+  .menu-header__link, .menu-header__link a {
     font-size: 13px;
   }
 }
@@ -3138,6 +3137,7 @@ a:hover {
 .admin-page {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .admin-page__header {
   flex: 0 0 70px;
@@ -3155,11 +3155,14 @@ a:hover {
 }
 
 .header-admin ul {
-  padding: 20px 0;
+  padding: 25px 0;
   height: 100%;
   display: flex;
   align-items: center;
   column-gap: 20px;
+}
+.header-admin ul li.to-right {
+  margin-left: auto;
 }
 .header-admin ul li a {
   text-decoration: none;
@@ -3176,6 +3179,7 @@ a:hover {
 }
 .content-admin__title {
   margin-bottom: 50px;
+  font-size: 30px;
 }
 .content-admin__list {
   display: flex;
@@ -3253,4 +3257,84 @@ a:hover {
 .controls-admin__list li a:hover {
   color: orange;
   text-decoration: underline;
+}
+
+.admin-page__change {
+  flex: 1 1 auto;
+}
+
+.change-admin {
+  padding: 30px 0;
+}
+.change-admin__title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.change-admin__title span {
+  font-weight: 700;
+}
+.product-admin__form {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: auto;
+  row-gap: 10px;
+  column-gap: 20px;
+}
+.product-admin__group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.product-admin__group input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 2px solid #777;
+  font-weight: 300;
+}
+.product-admin__group textarea {
+  max-width: 500px;
+  min-width: 400px;
+  min-height: 100px;
+  max-height: 150px;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 300;
+  border-radius: 5px;
+}
+.product-admin__group_sizeType {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+.product-admin__group_caretypes {
+  grid-area: 1/2/-1/3;
+}
+.product-admin__group_controls {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+}
+.product-admin__group_controls button {
+  padding: 15px 25px;
+  border-radius: 50px;
+  background-color: #FFC85E;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sizeType__type {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.sizeType__type input {
+  padding: 0;
+  margin: 0;
+}
+.sizeType__type label {
+  margin-bottom: 0;
 }

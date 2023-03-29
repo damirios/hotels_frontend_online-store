@@ -10,7 +10,7 @@ import { closeDropDown } from "../store/slices/dropDownSlice";
 import { Link, useLocation } from "react-router-dom";
 
 export function Header() {
-	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Возврат", "Контакты"];
+	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Контакты"];
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
 	const cart = useTypedSelector(state => state.cart);

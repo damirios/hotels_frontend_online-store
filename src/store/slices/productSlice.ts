@@ -40,6 +40,9 @@ const productsSlice = createSlice({
 		removeProduct(state, action) {
 			const index = state.list.findIndex(el => el.barcode === action.payload);
 			state.list.splice(index, 1);
+		},
+		updateProducts(state) {
+			state.list = getProductsFromLocalStorage();
 		}
 	},
 	extraReducers: (builder) => {
@@ -130,7 +133,8 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async (p
 export const {
 	sortProducts,
 	fetchPageProducts,
-	removeProduct
+	removeProduct,
+	updateProducts
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

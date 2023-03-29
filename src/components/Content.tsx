@@ -19,7 +19,6 @@ export function Content(props: {breadcrumbs?: string}) {
 	const pagination = useTypedSelector(state => state.pagination);
 	const sort = useTypedSelector(state => state.sort);
 	const dispatch = useTypedDispatch();
-	console.log(productsState);
 
 	let productsList = productsState.list;
 	const allManufacturers = Array.from(new Set(productsList.map(item => item.manufacturer)));

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useTypedDispatch } from "../hooks/useTypedDispatch";
-import { ProductType } from "../types/productDBType";
+import { useTypedDispatch } from "../../hooks/useTypedDispatch";
+import { ProductType } from "../../types/productDBType";
 
 
 export function AdminPageListItem(props: {product: ProductType}) {
@@ -28,7 +28,7 @@ export function AdminPageListItem(props: {product: ProductType}) {
                         <button onClick={handleRemoveProduct}>Удалить товар</button>
                     </li>
                     <li>
-                        <Link to={`/admin-page-edit?barcode=${product.barcode}`}>Изменить данные о товаре</Link>
+                        <Link to={`/admin-page/edit-product/${product.barcode}`}>Изменить данные о товаре</Link>
                     </li>
                 </ul>
             </div>
