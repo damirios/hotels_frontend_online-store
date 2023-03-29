@@ -59,7 +59,7 @@ export function Header() {
 				<div className="container">
 					<div className="top-header__row">
 						<div className="top-header__location location">
-							<img src="/images/icons/location.svg" alt="location" className="location__icon" />
+							<img src="./images/icons/location.svg" alt="location" className="location__icon" />
 							<div className="location__address">
 								<p className="bold">г. Кокчетав, ул. Ж. Ташенова 129Б</p>
 								<p>(Рынок Восточный)</p>
@@ -82,16 +82,16 @@ export function Header() {
 						<Link to='/' className="bottom-header__catalog catalog">
 							<span>Каталог</span>
 							{isMobile ? 
-								<img src="/images/icons/squares_mobile.svg" alt="squares" /> :
-								<img src="/images/icons/squares.svg" alt="squares" />
+								<img src="./images/icons/squares_mobile.svg" alt="squares" /> :
+								<img src="./images/icons/squares.svg" alt="squares" />
 							}
 						</Link>
 						<form className="bottom-header__search-form search-form-header">
 							<input type="text" placeholder="Поиск..." />
 							<button type="submit">
 								{isMobile ? 
-									<img src="/images/icons/search_mobile.svg" alt="search" /> :
-									<img src="/images/icons/search.svg" alt="search" />
+									<img src="./images/icons/search_mobile.svg" alt="search" /> :
+									<img src="./images/icons/search.svg" alt="search" />
 								}
 							</button>
 						</form>
@@ -99,8 +99,8 @@ export function Header() {
 							<ContactsPhone isMobile={isMobile} class='support' />
 							<div className="support__image-box">
 								{isMobile ? 
-									<img src="/images/icons/phone.svg" alt="phone" /> :
-									<img src="/images/support.png" alt="support" className="support__image" />
+									<img src="./images/icons/phone.svg" alt="phone" /> :
+									<img src="./images/support.png" alt="support" className="support__image" />
 								}
 								<div className="support__online-point"></div>
 							</div>
@@ -108,7 +108,7 @@ export function Header() {
 						<Pricelist class='bottom-header__pricelist pricelist' />
 						<Link to='/cart' className="bottom-header__cart cart">
 							<div className="cart__image-box">
-								<img src="/images/icons/cart.svg" alt="cart" className="cart__image" />
+								<img src="./images/icons/cart.svg" alt="cart" className="cart__image" />
 								<div className="cart__products-number">
 									<span>{cart.productsInCart.reduce((prev, current) => prev + current.quantity, 0)}</span>
 								</div>
