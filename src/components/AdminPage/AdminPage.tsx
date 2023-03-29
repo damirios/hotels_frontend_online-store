@@ -8,7 +8,7 @@ import { AdminPageHeader } from "./AdminPageHeader";
 export function AdminPage() {
     
     const allProducts: ProductType[] = useTypedSelector(state => state.products.list);
-    console.log(allProducts);
+    
     return (
         <div className="admin-page">
             <AdminPageHeader onAdminMain={true} />

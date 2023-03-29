@@ -21,7 +21,6 @@ export function Content(props: {breadcrumbs?: string}) {
 	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
 
 	const dispatch = useTypedDispatch();
-
 	const [firstRenderDone, setFirstRenderDone] = useState(false);
 	const [firstRenderDoneFiltered, setFirstRenderDoneFiltered] = useState(false);
 	
