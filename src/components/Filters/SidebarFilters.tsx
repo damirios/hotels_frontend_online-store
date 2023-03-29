@@ -8,12 +8,12 @@ import { setPageTo } from "../../store/slices/paginationSlice";
 import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { closeDropDown, openDropDown } from "../../store/slices/dropDownSlice";
-import { productsDB } from "../../data/productsDB";
 
 
 export function SidebarFilters(props: {clickHandler: any}) {
     const filters = useTypedSelector(state => state.filters);
-    const allManufacturersFromDB = Array.from(new Set(productsDB.map(product => product.manufacturer)));
+    const productInLS = useTypedSelector(state => state.products.list);
+    const allManufacturersFromDB = Array.from(new Set(productInLS.map(product => product.manufacturer)));
 
     const [minValue, setMinValue] = useState<string>(filters.price_min);
     const [maxValue, setMaxValue] = useState<string>(filters.price_max);

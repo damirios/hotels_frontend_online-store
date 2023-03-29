@@ -9,7 +9,6 @@ export function SingleProduct(props: {product: ProductType}) {
     const { product } = props;
     let sizeIconURL = `./images/icons/size_${product.sizeType}.svg`; // volume or weight
     const careTypesTitles = filterFields.filter(el => product.careTypes.includes(el.value)).map(el => el.title).join(', ');
-
     const [addToCartMessage, setAddToCartMessage] = useState(false);
     const dispatch = useTypedDispatch();
     

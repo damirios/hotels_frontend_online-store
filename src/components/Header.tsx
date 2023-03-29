@@ -39,7 +39,6 @@ export function Header() {
 	if (pathname.includes('/admin-page')) {
 		return null;
 	}
-	console.log(width);
 
 	return (
 		<header className="header">

@@ -4,6 +4,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isSubarray } from '../../utilityFunctions/isSubarray';
 import { paginationInitialState } from "./paginationSlice";
 import { getProductsFromLocalStorage } from "../../utilityFunctions/localStorageFunctions";
+import { ProductType } from "../../types/productDBType";
 
 const initialState: ProductsState = {
 	list: getProductsFromLocalStorage(),
@@ -76,7 +77,10 @@ type FetchProductsParamsType = {
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async (params: FetchProductsParamsType) => {
 	const {page, maxPrice, minPrice, selectedManufacturers, shownProductsNumber, careTypes, sortParams} = params;
-	let allProducts = [...productsDB];
+	let allProducts: ProductType[] = getProductsFromLocalStorage();
+	if (allProducts === null) {
+		allProducts = [...productsDB];
+	}
 	if (sortParams) {
 		allProducts.sort((a, b) => {
 			const coef = sortParams.order === 'asc' ? 1 : -1;

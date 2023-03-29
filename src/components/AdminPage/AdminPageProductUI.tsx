@@ -38,7 +38,7 @@ export function AdminPageProductUI(props: PropsType) {
         const price = +((e.target as HTMLFormElement)[4] as HTMLInputElement).value;
         const sizeType = ((e.target as HTMLFormElement)[5] as HTMLInputElement).checked ? 'weight' : 'volume';
         const size = +((e.target as HTMLFormElement)[7] as HTMLInputElement).value;
-        const brand = ((e.target as HTMLFormElement)[10] as HTMLInputElement).value;
+        const brand = ((e.target as HTMLFormElement)[8] as HTMLInputElement).value;
         const correctCareTypes = careTypes.map(el => el.value);
 
         if (edit) {
