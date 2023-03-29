@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export function List(props: {class?: string, list: string[], singleClass?: string, title: string}) {
+
     return (
         <div className={`${props.class} ${props.singleClass ? props.singleClass : ''}`}>
             <h1 className={`${props.class}__title`}>{props.title}</h1>

@@ -8,25 +8,21 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { closeDropDown } from "../store/slices/dropDownSlice";
 import { Link, useLocation } from "react-router-dom";
+import { useWindowSize } from "../hooks/useWindowSize";
+import { Support } from "./UI/Support";
 
 export function Header() {
 	const menuLinks: string[] = ["О компании", "Доставка и оплата", "Контакты"];
-	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
+	
 	const cart = useTypedSelector(state => state.cart);
 	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
 	const dispatch = useTypedDispatch();
 
-	useEffect(() => {
-		if (isMobile) {
-			setMobileArch();
-		} else {
-			setDesktopArch();
-		}
-	}, [isMobile]);
+	const [width, height] = useWindowSize();
+	const [isMobile, setIsMobile] = useState(width <= 768);
 
 	window.addEventListener('resize', (e) => {
-		if (window.innerWidth <= 768) {
+		if (width <= 768) {
 			setIsMobile(true);
 		} else {
 			setIsMobile(false);
@@ -65,8 +61,11 @@ export function Header() {
 								<p>(Рынок Восточный)</p>
 							</div>
 						</div>
+						{isMobile ? <Support isMobile={isMobile} /> : null}
 						<MailLink class='top-header' image={true} />
-						<List class='menu-header' singleClass="top-header__menu" title={'Меню сайта: '} list={menuLinks} />
+						<List class='menu-header' singleClass="top-header__menu" 
+						title={'Меню сайта: '} list={menuLinks} />
+						{isMobile ? <Pricelist class='bottom-header__pricelist pricelist' /> : null}
 					</div>
 				</div>
 			</div>
@@ -95,17 +94,8 @@ export function Header() {
 								}
 							</button>
 						</form>
-						<div className="bottom-header__support support">
-							<ContactsPhone isMobile={isMobile} class='support' />
-							<div className="support__image-box">
-								{isMobile ? 
-									<img src="./images/icons/phone.svg" alt="phone" /> :
-									<img src="./images/support.png" alt="support" className="support__image" />
-								}
-								<div className="support__online-point"></div>
-							</div>
-						</div>
-						<Pricelist class='bottom-header__pricelist pricelist' />
+						{isMobile ? null : <Support isMobile={isMobile} />}
+						{isMobile ? null : <Pricelist class='bottom-header__pricelist pricelist' />}
 						<Link to='/cart' className="bottom-header__cart cart">
 							<div className="cart__image-box">
 								<img src="./images/icons/cart.svg" alt="cart" className="cart__image" />
