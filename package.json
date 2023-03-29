@@ -2,7 +2,7 @@
   "name": "hotels_frontend_online-store",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://damirios.github.io/hotels_frontend_online-store",
+  "homepage": "https://damirios.github.io/hotels_frontend_online-store/index.html",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
