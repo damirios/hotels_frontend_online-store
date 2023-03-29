@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const paginationInitialState = {
-    visibleProductsNumber: 6,
+    visibleProductsNumber: 10,
     currentPage: 1
 };
 

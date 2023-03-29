@@ -728,7 +728,7 @@ a:hover {
 @media (max-width: 768px) {
   .header {
     position: relative;
-    z-index: 1;
+    z-index: 6;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1531,11 +1531,6 @@ a:hover {
     grid-template-rows: minmax(48px, auto) auto auto auto auto auto;
   }
 }
-@media (max-width: 768px) {
-  .catalog-content__menu {
-    padding-top: 25px;
-  }
-}
 .catalog-content__top {
   grid-area: 1/1/2/-1;
   display: flex;
@@ -2104,35 +2099,10 @@ a:hover {
 .sidebar__form.open {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  padding: 0 15px 40px;
+  padding: 0 15px 0px;
   background-color: #fff;
-  z-index: 5;
-  left: 0;
-  width: 100vw;
-  height: 70%;
   overflow: auto;
   border: 0;
-}
-@media (max-height: 768px) {
-  .sidebar__form.open {
-    height: 60%;
-  }
-}
-@media (max-height: 650px) {
-  .sidebar__form.open {
-    height: 55%;
-  }
-}
-@media (max-height: 550px) {
-  .sidebar__form.open {
-    height: 50%;
-  }
-}
-@media (max-height: 400px) {
-  .sidebar__form.open {
-    height: 30%;
-  }
 }
 .sidebar__form.open .sidebar__controls {
   margin-top: auto;

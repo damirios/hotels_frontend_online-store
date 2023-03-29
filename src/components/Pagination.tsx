@@ -12,7 +12,7 @@ export function Pagination() {
     const navigate = useNavigate();
     const dispatch = useTypedDispatch();
     
-    const numberOfPages = Math.ceil(products.list.length / pagination.visibleProductsNumber);
+    const numberOfPages = Math.ceil(products.listToShow.length / pagination.visibleProductsNumber);
     const keys = Array.from(Array(numberOfPages).keys());
     
     function handlePrevClick() {

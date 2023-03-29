@@ -8,6 +8,7 @@ import { ProductType } from "../../types/productDBType";
 
 const initialState: ProductsState = {
 	list: getProductsFromLocalStorage(),
+	listToShow: getProductsFromLocalStorage(),
 	pageList: [...productsDB].slice(0, paginationInitialState.visibleProductsNumber),
 	loading: false,
 	error: null,
@@ -21,7 +22,7 @@ const productsSlice = createSlice({
 		sortProducts(state, action: PayloadAction<{sortParam: string, sortOrder: string}>) {
 			const {sortParam, sortOrder} = action.payload;
 			const coef = sortOrder === 'asc' ? 1 : -1;
-			state.list.sort(function(a, b): number {
+			state.listToShow.sort(function(a, b): number {
 				if (sortParam === 'title' || sortParam === 'price') {
 					if (a[sortParam] < b[sortParam]) {
 						return -1 * coef;
@@ -47,17 +48,16 @@ const productsSlice = createSlice({
 		}
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchProducts.pending, (state, action) => {
+		builder.addCase(fetchFilteredProducts.pending, (state, action) => {
 			state.status = 'loading';
-		}).addCase(fetchProducts.fulfilled, (state, action: PayloadAction<any>) => {
+		}).addCase(fetchFilteredProducts.fulfilled, (state, action: PayloadAction<any>) => {
 			state.status = 'loaded';
-			state.list = action.payload.list;
+			state.listToShow = action.payload.list;
 			state.pageList = action.payload.pageList;
 			
-		}).addCase(fetchProducts.rejected, (state, action: PayloadAction<any>) => {
+		}).addCase(fetchFilteredProducts.rejected, (state, action: PayloadAction<any>) => {
 			state.status = 'loaded';
 			state.error = action.payload;
-			
 		})
 	}
 });
@@ -75,7 +75,7 @@ type FetchProductsParamsType = {
 	}
 }
 
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async (params: FetchProductsParamsType) => {
+export const fetchFilteredProducts = createAsyncThunk('products/fetchProducts', async (params: FetchProductsParamsType) => {
 	const {page, maxPrice, minPrice, selectedManufacturers, shownProductsNumber, careTypes, sortParams} = params;
 	let allProducts: ProductType[] = getProductsFromLocalStorage();
 	if (allProducts === null) {

@@ -5,10 +5,10 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { Products } from "./Products";
 import { SidebarFilters } from "./Filters/SidebarFilters";
-import { setCareTypesFilter } from "../store/slices/filtersSlice";
+import { resetFilters, setCareTypesFilter } from "../store/slices/filtersSlice";
 import { SelectedFilters } from "./UI/SelectedFilters";
 import { Pagination } from "./Pagination";
-import { fetchProducts, fetchPageProducts, sortProducts } from "../store/slices/productSlice";
+import { fetchFilteredProducts, fetchPageProducts, sortProducts } from "../store/slices/productSlice";
 import { useEffect, useState } from "react";
 import { useWindowSize } from "../hooks/useWindowSize";
 import { Breadcrumbs } from "./UI/Breadcrumbs";
@@ -18,20 +18,18 @@ export function Content(props: {breadcrumbs?: string}) {
 	const filters = useTypedSelector(state => state.filters);
 	const pagination = useTypedSelector(state => state.pagination);
 	const sort = useTypedSelector(state => state.sort);
-	const dispatch = useTypedDispatch();
+	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
 
-	let productsList = productsState.list;
-	const allManufacturers = Array.from(new Set(productsList.map(item => item.manufacturer)));
+	const dispatch = useTypedDispatch();
 
 	const [firstRenderDone, setFirstRenderDone] = useState(false);
 	const [firstRenderDoneFiltered, setFirstRenderDoneFiltered] = useState(false);
 	
-	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
     const [width, height] = useWindowSize();
 
 	useEffect(() => {
 		if (firstRenderDone) {
-			dispatch(fetchProducts({
+			dispatch(fetchFilteredProducts({
 				maxPrice: filters.price_max,
 				minPrice: filters.price_min,
 				selectedManufacturers: filters.manufacturersList,
@@ -100,15 +98,15 @@ export function Content(props: {breadcrumbs?: string}) {
 							}
 							{width <= 768 ? null : <Sort />}
 						</div>
-						{width <= 768 && productsState.status === 'loading' ? 
+						{(width <= 768 && productsState.status === 'loading') || isDropDownOpen ? 
 							null : <FiltersTop top={true} className='catalog-content__filters-top' 
 							clickHandler={handleCareTypeFilterClick} list={filterFields} />
 						}
 						{width <= 768 && !isDropDownOpen && productsState.status !== 'loading' ? <Sort /> : null}
 						<SelectedFilters />
 						<SidebarFilters clickHandler={handleCareTypeFilterClick} />
-						<Products />
-						<Pagination />
+						{isDropDownOpen ? null : <Products />}
+						{isDropDownOpen ? null : <Pagination />}
 						{!isDropDownOpen ? <div className="catalog-content__bottom-info bottom-info">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, 
 								vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. 

@@ -4,6 +4,7 @@ import { Pricelist } from './Pricelist';
 import { ContactsPhone } from './ContactsPhone';
 import { MailLink } from './MailLink';
 import { Link, useLocation } from 'react-router-dom';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 export function Footer() {
 
@@ -11,7 +12,9 @@ export function Footer() {
 	const categoryLinks: string[] = ["Бытовая химия", "Косметика и гигиена", "Товары для дома", "Товары для детей и мам", "Посуда"];
 
 	const { pathname } = useLocation();
-	if (pathname.includes('/admin-page')) {
+	const isDropDownOpen = useTypedSelector(state => state.dropDown.isOpen);
+
+	if (pathname.includes('/admin-page') || isDropDownOpen) {
 		return null;
 	}
 
