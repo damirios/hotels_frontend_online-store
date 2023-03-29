@@ -2110,9 +2110,29 @@ a:hover {
   z-index: 5;
   left: 0;
   width: 100vw;
-  height: calc(100% - 306px);
+  height: 70%;
   overflow: auto;
   border: 0;
+}
+@media (max-height: 768px) {
+  .sidebar__form.open {
+    height: 60%;
+  }
+}
+@media (max-height: 650px) {
+  .sidebar__form.open {
+    height: 55%;
+  }
+}
+@media (max-height: 550px) {
+  .sidebar__form.open {
+    height: 50%;
+  }
+}
+@media (max-height: 400px) {
+  .sidebar__form.open {
+    height: 30%;
+  }
 }
 .sidebar__form.open .sidebar__controls {
   margin-top: auto;

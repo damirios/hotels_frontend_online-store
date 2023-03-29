@@ -19,15 +19,6 @@ export function Header() {
 	const dispatch = useTypedDispatch();
 
 	const [width, height] = useWindowSize();
-	const [isMobile, setIsMobile] = useState(width <= 768);
-
-	window.addEventListener('resize', (e) => {
-		if (width <= 768) {
-			setIsMobile(true);
-		} else {
-			setIsMobile(false);
-		}
-	});
 
 	function handleBurgerClick(e: React.MouseEvent) {
 		const burgerContent = document.querySelector('.top-header__row');
@@ -48,7 +39,8 @@ export function Header() {
 	if (pathname.includes('/admin-page')) {
 		return null;
 	}
-	
+	console.log(width);
+
 	return (
 		<header className="header">
 			<div className="header__top top-header">
@@ -61,11 +53,11 @@ export function Header() {
 								<p>(Рынок Восточный)</p>
 							</div>
 						</div>
-						{isMobile ? <Support isMobile={isMobile} /> : null}
+						{width <= 768 ? <Support isMobile={width <= 768} /> : null}
 						<MailLink class='top-header' image={true} />
 						<List class='menu-header' singleClass="top-header__menu" 
 						title={'Меню сайта: '} list={menuLinks} />
-						{isMobile ? <Pricelist class='bottom-header__pricelist pricelist' /> : null}
+						{width <= 768 ? <Pricelist class='bottom-header__pricelist pricelist' /> : null}
 					</div>
 				</div>
 			</div>
@@ -80,7 +72,7 @@ export function Header() {
 						<Logo class="bottom-header__logo" />
 						<Link to='/' className="bottom-header__catalog catalog">
 							<span>Каталог</span>
-							{isMobile ? 
+							{width <= 768 ? 
 								<img src="./images/icons/squares_mobile.svg" alt="squares" /> :
 								<img src="./images/icons/squares.svg" alt="squares" />
 							}
@@ -88,14 +80,14 @@ export function Header() {
 						<form className="bottom-header__search-form search-form-header">
 							<input type="text" placeholder="Поиск..." />
 							<button type="submit">
-								{isMobile ? 
+								{width <= 768 ? 
 									<img src="./images/icons/search_mobile.svg" alt="search" /> :
 									<img src="./images/icons/search.svg" alt="search" />
 								}
 							</button>
 						</form>
-						{isMobile ? null : <Support isMobile={isMobile} />}
-						{isMobile ? null : <Pricelist class='bottom-header__pricelist pricelist' />}
+						{width <= 768 ? null : <Support isMobile={width <= 768} />}
+						{width <= 768 ? null : <Pricelist class='bottom-header__pricelist pricelist' />}
 						<Link to='/cart' className="bottom-header__cart cart">
 							<div className="cart__image-box">
 								<img src="./images/icons/cart.svg" alt="cart" className="cart__image" />
@@ -116,39 +108,4 @@ export function Header() {
 			</div>
 		</header>
 	)
-}
-
-function setMobileArch() {
-	const bottomHeader = document.querySelector('.bottom-header__row');
-	const topHeader = document.querySelector('.top-header__row');
-	const pricelist = bottomHeader?.querySelector('.pricelist');
-	const support = bottomHeader?.querySelector('.support');
-
-	if (topHeader && pricelist) {
-		topHeader.appendChild(pricelist);
-	}
-
-	if (topHeader && support) {
-		topHeader.appendChild(support);
-	}
-}
-
-function setDesktopArch() {
-	const bottomHeader = document.querySelector('.bottom-header__row');
-	const topHeader = document.querySelector('.top-header__row');
-	const pricelist = topHeader?.querySelector('.pricelist');
-	const support = topHeader?.querySelector('.support');
-	const cart = bottomHeader?.querySelector('.cart');
-	
-	if (bottomHeader && support) {
-		bottomHeader.appendChild(support);
-	}
-
-	if (bottomHeader && pricelist) {
-		bottomHeader.appendChild(pricelist);
-	}
-
-	if (cart) {
-		bottomHeader?.appendChild(cart);
-	}
 }
