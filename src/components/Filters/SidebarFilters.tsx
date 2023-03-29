@@ -106,7 +106,7 @@ export function SidebarFilters(props: {clickHandler: any}) {
                 <h1 onClick={handleDropDown} className={`sidebar__title ${isDropDownOpen ? 'open' : ''}`}>
                     <span>Подбор по параметрам</span>
                     {width <= 768 ? <div className={`image-box ${isDropDownOpen ? 'reverse' : ''}`}>
-                            <img src="/images/icons/arrow_down.svg" alt="arrow_down" />
+                            <img src="./images/icons/arrow_down.svg" alt="arrow_down" />
                         </div> : null
                     }
                 </h1>
@@ -147,7 +147,7 @@ export function SidebarFilters(props: {clickHandler: any}) {
                 <div className="sidebar__controls">
                     <button type="submit" className="sidebar__submit">Показать</button>
                     <button type="reset" className="sidebar__reset">
-                        <img src="/images/icons/bin.svg" alt="bin" />
+                        <img src="./images/icons/bin.svg" alt="bin" />
                     </button>
                 </div>
             </form>

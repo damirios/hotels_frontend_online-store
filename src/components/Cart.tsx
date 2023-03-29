@@ -49,7 +49,7 @@ export function Cart() {
                             <div className="thanks__box">
                                 <div onClick={handleCloseThanks} className="thanks__close-x"></div>
                                 <button onClick={handleCloseThanks} className="thanks__close-button">
-                                    <img src="/images/icons/ok.svg" alt="ok" />
+                                    <img src="./images/icons/ok.svg" alt="ok" />
                                 </button>
                                 <div className="thanks__title">
                                     Спасибо за заказ

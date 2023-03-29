@@ -29,7 +29,7 @@ export function Footer() {
 							<form className="subscribe-footer__form">
 								<input type="text" className='subscribe-footer__input' placeholder='Введите ваш E-mail' />
 								<button className="subscribe-footer__submit">
-									<img src="/images/icons/arrow-right.svg" alt="arrow-right" />
+									<img src="./images/icons/arrow-right.svg" alt="arrow-right" />
 								</button>
 							</form>
 						</div>
@@ -47,10 +47,10 @@ export function Footer() {
 							<h1>Связь в мессенджерах:</h1>
 							<div className="messengers__buttons">
 								<button className='messengers__whatsapp'>
-									<img src="/images/icons/whatsapp.svg" alt="whatsapp" />
+									<img src="./images/icons/whatsapp.svg" alt="whatsapp" />
 								</button>
 								<button className='messengers__telegram'>
-									<img src="/images/icons/telegram.svg" alt="telegram" />
+									<img src="./images/icons/telegram.svg" alt="telegram" />
 								</button>
 							</div>
 						</div>
@@ -61,10 +61,10 @@ export function Footer() {
 						<MailLink image={false} class='contacts' />
 						<div className="contacts__cards">
 							<a href="/">
-								<img src="/images/icons/visa.svg" alt="visa" />
+								<img src="./images/icons/visa.svg" alt="visa" />
 							</a>
 							<a href="/">
-								<img src="/images/icons/masterCard.svg" alt="masterCard" />
+								<img src="./images/icons/masterCard.svg" alt="masterCard" />
 							</a>
 						</div>
 					</div>

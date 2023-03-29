@@ -6,7 +6,7 @@ import { ProductType, sizeTypes } from "../types/productDBType";
 
 export function CartItem(props: {product: ProductType, quantity: number}) {
     const {product, quantity} = props;
-    let sizeIconURL = `/images/icons/size_${product?.sizeType}.svg`; // volume or weight
+    let sizeIconURL = `./images/icons/size_${product?.sizeType}.svg`; // volume or weight
 
     const [count, setCount] = useState(quantity);
     const [showDispatchButton, setShowDispatchButton] = useState(false);
@@ -71,7 +71,7 @@ export function CartItem(props: {product: ProductType, quantity: number}) {
             </div>
             <div className="item-cart__remove-button-box">
                 <button type="button" onClick={handleRemoveClick} className="item-cart__remove-button">
-                    <img src="/images/icons/bin.svg" alt="bin" />
+                    <img src="./images/icons/bin.svg" alt="bin" />
                 </button>
             </div>
         </li>

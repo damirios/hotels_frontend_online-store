@@ -2,7 +2,7 @@ import { ProductType } from "../types/productDBType";
 import { sizeTypes } from "../types/productDBType";
 
 const sorti_1: ProductType = {
-    image_url: '/images/products/sorti_1.png',
+    image_url: './images/products/sorti_1.png',
     title: 'Sorti',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -15,7 +15,7 @@ const sorti_1: ProductType = {
 }
 
 const aos_1: ProductType = {
-    image_url: '/images/products/aos_1.png',
+    image_url: './images/products/aos_1.png',
     title: 'Aos',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -28,7 +28,7 @@ const aos_1: ProductType = {
 }
 
 const ariel_1: ProductType = {
-    image_url: '/images/products/ariel_1.png',
+    image_url: './images/products/ariel_1.png',
     title: 'Ariel',
     sizeType: sizeTypes.weight,
     size: 15 * 28.8,
@@ -41,7 +41,7 @@ const ariel_1: ProductType = {
 }
 
 const bimax_1: ProductType = {
-    image_url: '/images/products/bimax_1.png',
+    image_url: './images/products/bimax_1.png',
     title: 'Bimax',
     sizeType: sizeTypes.weight,
     size: 1500,
@@ -54,7 +54,7 @@ const bimax_1: ProductType = {
 }
 
 const sorti_2: ProductType = {
-    image_url: '/images/products/sorti_1.png',
+    image_url: './images/products/sorti_1.png',
     title: 'Sorti',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -67,7 +67,7 @@ const sorti_2: ProductType = {
 }
 
 const aos_2: ProductType = {
-    image_url: '/images/products/aos_1.png',
+    image_url: './images/products/aos_1.png',
     title: 'Aos',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -80,7 +80,7 @@ const aos_2: ProductType = {
 }
 
 const ariel_2: ProductType = {
-    image_url: '/images/products/ariel_1.png',
+    image_url: './images/products/ariel_1.png',
     title: 'Ariel',
     sizeType: sizeTypes.weight,
     size: 15 * 28.8,
@@ -93,7 +93,7 @@ const ariel_2: ProductType = {
 }
 
 const bimax_2: ProductType = {
-    image_url: '/images/products/bimax_1.png',
+    image_url: './images/products/bimax_1.png',
     title: 'Bimax',
     sizeType: sizeTypes.weight,
     size: 1500,
@@ -106,7 +106,7 @@ const bimax_2: ProductType = {
 }
 
 const sorti_3: ProductType = {
-    image_url: '/images/products/sorti_1.png',
+    image_url: './images/products/sorti_1.png',
     title: 'Sorti',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -119,7 +119,7 @@ const sorti_3: ProductType = {
 }
 
 const aos_3: ProductType = {
-    image_url: '/images/products/aos_1.png',
+    image_url: './images/products/aos_1.png',
     title: 'Aos',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -132,7 +132,7 @@ const aos_3: ProductType = {
 }
 
 const ariel_3: ProductType = {
-    image_url: '/images/products/ariel_1.png',
+    image_url: './images/products/ariel_1.png',
     title: 'Ariel',
     sizeType: sizeTypes.weight,
     size: 15 * 28.8,
@@ -145,7 +145,7 @@ const ariel_3: ProductType = {
 }
 
 const bimax_3: ProductType = {
-    image_url: '/images/products/bimax_1.png',
+    image_url: './images/products/bimax_1.png',
     title: 'Bimax',
     sizeType: sizeTypes.weight,
     size: 1500,
@@ -158,7 +158,7 @@ const bimax_3: ProductType = {
 }
 
 const sorti_4: ProductType = {
-    image_url: '/images/products/sorti_1.png',
+    image_url: './images/products/sorti_1.png',
     title: 'Sorti',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -171,7 +171,7 @@ const sorti_4: ProductType = {
 }
 
 const aos_4: ProductType = {
-    image_url: '/images/products/aos_1.png',
+    image_url: './images/products/aos_1.png',
     title: 'Aos',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -184,7 +184,7 @@ const aos_4: ProductType = {
 }
 
 const ariel_4: ProductType = {
-    image_url: '/images/products/ariel_1.png',
+    image_url: './images/products/ariel_1.png',
     title: 'Ariel',
     sizeType: sizeTypes.weight,
     size: 15 * 28.8,
@@ -197,7 +197,7 @@ const ariel_4: ProductType = {
 }
 
 const bimax_4: ProductType = {
-    image_url: '/images/products/bimax_1.png',
+    image_url: './images/products/bimax_1.png',
     title: 'Bimax',
     sizeType: sizeTypes.weight,
     size: 1500,
@@ -210,7 +210,7 @@ const bimax_4: ProductType = {
 }
 
 const sorti_5: ProductType = {
-    image_url: '/images/products/sorti_1.png',
+    image_url: './images/products/sorti_1.png',
     title: 'Sorti',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -223,7 +223,7 @@ const sorti_5: ProductType = {
 }
 
 const aos_5: ProductType = {
-    image_url: '/images/products/aos_1.png',
+    image_url: './images/products/aos_1.png',
     title: 'Aos',
     sizeType: sizeTypes.volume,
     size: 450,
@@ -236,7 +236,7 @@ const aos_5: ProductType = {
 }
 
 const ariel_5: ProductType = {
-    image_url: '/images/products/ariel_1.png',
+    image_url: './images/products/ariel_1.png',
     title: 'Ariel',
     sizeType: sizeTypes.weight,
     size: 15 * 28.8,
@@ -249,7 +249,7 @@ const ariel_5: ProductType = {
 }
 
 const bimax_5: ProductType = {
-    image_url: '/images/products/bimax_1.png',
+    image_url: './images/products/bimax_1.png',
     title: 'Bimax',
     sizeType: sizeTypes.weight,
     size: 1500,

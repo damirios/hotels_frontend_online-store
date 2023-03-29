@@ -58,7 +58,7 @@ export function ProductFullPage() {
         }
     }
 
-    let sizeIconURL = `/images/icons/size_${product?.sizeType}.svg`; // volume or weight
+    let sizeIconURL = `./images/icons/size_${product?.sizeType}.svg`; // volume or weight
     if (product) {
         return (
             <div>
@@ -97,14 +97,14 @@ export function ProductFullPage() {
                                     <div className="full-product__add-info add-info">
                                         {width <= 600 ? <ToCartButton clickHandler={handleAddToCartClick} /> : null}
                                         <button type="button" className="add-info__share">
-                                            <img src="/images/icons/share.svg" alt="share" />
+                                            <img src="./images/icons/share.svg" alt="share" />
                                         </button>
                                         <div className="add-info__free-delivery">
                                             При покупке от <span>10 000 ₸</span> бесплатная доставка по Кокчетаву и области
                                         </div>
                                         <button className="add-info__pricelist">
                                             <span>Прайс-лист</span>
-                                            <img src="/images/icons/download_black.svg" alt="download" />
+                                            <img src="./images/icons/download_black.svg" alt="download" />
                                         </button>
                                     </div>
                                     <div className="full-product__params params">
@@ -124,7 +124,7 @@ export function ProductFullPage() {
                                     <div className="full-product__description">
                                         <h1 onClick={handleDescriptionClick}>
                                             <span>Описание</span>
-                                            <img src="/images/icons/triangle_down.svg" alt="triangle" />
+                                            <img src="./images/icons/triangle_down.svg" alt="triangle" />
                                         </h1>
                                         <div className={`${isDescriptionOpen ? 'shown' : ''}`}>
                                             Какое-то крутое описание товара
@@ -133,7 +133,7 @@ export function ProductFullPage() {
                                     <div className="full-product__characteristics">
                                         <h1 onClick={handleCharacteristicsClick}>
                                             <span>Характеристики</span>
-                                            <img src="/images/icons/triangle_down.svg" alt="triangle" />
+                                            <img src="./images/icons/triangle_down.svg" alt="triangle" />
                                         </h1>
                                         <ul className={`${isCharacteristicsOpen ? 'shown' : ''}`} >
                                             <li>Характеристика 1: <span>значение 1</span></li>

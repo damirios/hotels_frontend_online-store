@@ -7,7 +7,7 @@ import { addProductToCart } from "../store/slices/cartSlice";
 
 export function SingleProduct(props: {product: ProductType}) {
     const { product } = props;
-    let sizeIconURL = `/images/icons/size_${product.sizeType}.svg`; // volume or weight
+    let sizeIconURL = `./images/icons/size_${product.sizeType}.svg`; // volume or weight
     const careTypesTitles = filterFields.filter(el => product.careTypes.includes(el.value)).map(el => el.title).join(', ');
 
     const [addToCartMessage, setAddToCartMessage] = useState(false);
@@ -59,7 +59,7 @@ export function SingleProduct(props: {product: ProductType}) {
                     {addToCartMessage ? <div className="single-product__message">Товар добавлен в корзину!</div> : null}
                     <button type='button' onClick={handleAddToCartClick} className="single-product__cart-button">
                         <span>В корзину </span>
-                        <img src="/images/icons/cart_white.svg" alt="cart" />
+                        <img src="./images/icons/cart_white.svg" alt="cart" />
                     </button>
                 </div>
             </div>

@@ -7,7 +7,7 @@ export function ContactsPhone(props: {isMobile: boolean, class?: string}) {
             <a href="tel:+77774900091" className={`${props.class}__call`}>
                 {props.isMobile ?
                     <div className={`${props.class}__images-box`}>
-                        <img src="/images/icons/phone_white.svg" alt="phone" className={`${props.class}__call-image`} />
+                        <img src="./images/icons/phone_white.svg" alt="phone" className={`${props.class}__call-image`} />
                     </div> : null
                 }
                 <span>Заказать звонок</span>

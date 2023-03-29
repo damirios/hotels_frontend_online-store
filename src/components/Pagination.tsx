@@ -50,7 +50,7 @@ export function Pagination() {
         {numberOfPages > 1 ? 
             <div className="pagination__row">
                 <div className="pagination__prev" onClick={handlePrevClick}>
-                    <img src="/images/icons/arrow_left_yellow.svg" alt="arrow_left" />
+                    <img src="./images/icons/arrow_left_yellow.svg" alt="arrow_left" />
                 </div>
                 <ul className="pagination__list">
                     {keys.map(key => <li className="pagination__item" 
@@ -61,7 +61,7 @@ export function Pagination() {
                         </li>)}
                 </ul>
                 <div className="pagination__next" onClick={handleNextClick}>
-                    <img src="/images/icons/arrow_right_yellow.svg" alt="arrow_right" />
+                    <img src="./images/icons/arrow_right_yellow.svg" alt="arrow_right" />
                 </div>
             </div> : null
         }
