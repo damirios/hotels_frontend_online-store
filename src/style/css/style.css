@@ -1594,7 +1594,7 @@ a:hover {
   }
   .catalog-content__top {
     order: 1;
-    margin-bottom: 15px;
+    padding: 25px 0 20px;
   }
   .catalog-content__title {
     font-size: 20px;
@@ -2099,7 +2099,7 @@ a:hover {
 .sidebar__form.open {
   display: flex;
   flex-direction: column;
-  padding: 0 15px 0px;
+  padding: 0;
   background-color: #fff;
   overflow: auto;
   border: 0;

@@ -1779,7 +1779,7 @@ a {
 
 		&__top {
 			order: 1;
-			margin-bottom: 15px;
+			padding: 25px 0 20px;
 		}
 
 		&__title {
@@ -2338,6 +2338,7 @@ a {
 	&__title.open {
 		position: relative;
 		z-index: 5;
+		
 	}
 
 	&__form {
@@ -2353,7 +2354,7 @@ a {
 	&__form.open {
 		display: flex;
 		flex-direction: column;
-		padding: 0 15px 0px;
+		padding: 0;
 		background-color: #fff;
 		overflow: auto;
 		border: 0;
