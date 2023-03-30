@@ -14,7 +14,6 @@ export function Sort() {
         dispatch(setSortState({order: sortOrder, param: sortParam}));
         dispatch(setPageTo(1));
         navigate("/");
-
     }, [selectOption]);
 
     function handleSelect(e: React.ChangeEvent<HTMLSelectElement>) {

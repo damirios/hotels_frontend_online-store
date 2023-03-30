@@ -31,7 +31,7 @@ const productsSlice = createSlice({
 				}
 				return 1;
 			});
-			state.pageList = state.list.slice(0, paginationInitialState.visibleProductsNumber);
+			state.pageList = state.listToShow.slice(0, paginationInitialState.visibleProductsNumber);
 		},
 		fetchPageProducts(state, action) {
 			const {page, productsNumber} = action.payload;
