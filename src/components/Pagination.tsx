@@ -31,7 +31,6 @@ export function Pagination() {
         if (currentPage !== numberOfPages) {
             navigate(`?page=${currentPage + 1}`);
             dispatch(setPageTo(currentPage + 1));
-            window.scrollTo({top: 0, behavior: "smooth"});
         }
     }
 

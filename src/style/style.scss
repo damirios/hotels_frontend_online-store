@@ -2553,6 +2553,10 @@ a {
 
 	&__prev, &__next {
 		cursor: pointer;
+		background-color: transparent;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
 	}
 
 	&__list {
