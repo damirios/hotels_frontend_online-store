@@ -22,8 +22,8 @@ export function Pagination() {
                 navigate("/");
             } else {
                 navigate(`?page=${newPage}`);
-                dispatch(setPageTo(newPage));
             }
+            dispatch(setPageTo(newPage));
         }
     }
 
@@ -31,6 +31,7 @@ export function Pagination() {
         if (currentPage !== numberOfPages) {
             navigate(`?page=${currentPage + 1}`);
             dispatch(setPageTo(currentPage + 1));
+            window.scrollTo({top: 0, behavior: "smooth"});
         }
     }
 
@@ -43,6 +44,7 @@ export function Pagination() {
                 navigate(`/?page=${pageNumber}`);
             }
             dispatch(setPageTo(+pageNumber));
+            window.scrollTo({top: 0, behavior: "smooth"});
         }
     }
 
