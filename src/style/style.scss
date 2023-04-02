@@ -2554,9 +2554,12 @@ a {
 	&__prev, &__next {
 		cursor: pointer;
 		background-color: transparent;
-		width: 25px;
-		height: 25px;
+		width: 35px;
+		height: 35px;
 		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	&__list {
